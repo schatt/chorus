@@ -61,12 +61,17 @@ $more-info-color: #888888;
 }
 
 .tooltip-help {
-    @include tooltip($error-text-color, #282828, #282828);
+    $tooltip-help-background-color: #303030;
 
+    @include tooltip($informational-tooltip-text-color, $tooltip-help-background-color, $tooltip-help-background-color);
+    
+    
     .ui-tooltip-content {
+        border: none;
+        max-width: 350px;
         font-size: $small-font;
         line-height: normal;
-        max-width: 350px;
+
     }
 }
 
@@ -80,7 +85,7 @@ $more-info-color: #888888;
         line-height: 1.2;
 
         .content-bold {
-            font-size: 13px;
+            font-size: $small-font;
             font-weight: $semibold;
             margin-top: 2px;
             margin-bottom: 5px;
