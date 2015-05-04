@@ -180,7 +180,7 @@ $alert-text-color:          $core-white;
 //$warning-color: $needs-attention;  //used?
 $warning-background-color:  $needs-attention;
 $warning-icon-color:        #B24E11;
-/* $warning-text-color:     $core-white; */
+// $warning-text-color:     $core-white; */
 
 //$informational-color: $pacific-blue;  // used?
 $informational-background-color:    #DAEDFE;
@@ -232,10 +232,10 @@ $guts-padding-bottom: 15px;
 // default sizing for the user profile image
 $user-detail-image-width: 150px;
 
-/* small size icons, such as for workfiles */
+// small size icons, such as for workfiles */
 $icon-image-width : 35px;
 $icon-image-height : 35px;
-/* regular size icons, such as for workfiles */
+// regular size icons, such as for workfiles */
 $large-image-width : 45px;
 $large-image-height : 45px;
 $activity-gutter: 15px;
@@ -247,7 +247,7 @@ $texteditor-min-height: 300px;
 $default-dialog-width: 500px;
 $default-dialog-width-medium: 600px;
 $default-dialog-width-wide: 940px;
-/* $dialog-padding= interior padding from edge for dialog content */
+// $dialog-padding= interior padding from edge for dialog content */
 $dialog-padding: 15px;
 $dialog-padding-leftRight: 15px;
 $dialog-padding-top: 15px;
@@ -255,7 +255,7 @@ $dialog-padding-bottom: 15px;
 
 $separator-space: 4px;
 
-$caret-margin: 5px;		// space between the text and the caret glyph
+$caret-margin: 5px; // space between the text and the caret glyph
 
 
 // General application sizes
@@ -339,12 +339,12 @@ $mid-light-type: #5f5f5f;
 
 $action-bar-highlighted-font-color: $fiji-green;
 
-/* Link */
+// LINK */
 
 $default-link-color: $blue;
 $low-light-link-color: $gray;
 
-/* Lists */
+// LISTS */
 
 $list-horizontal-divider: 1px solid $border-color;
 $list-vertical-divider: 1px solid $border-color;
@@ -352,23 +352,23 @@ $list-selectable-hover-color: rgba(0,0,0,0.1);
 $list-selectable-selected-color: #FFFFFF;
 $list-border-color-highlighted: $green;
 
-/* breadcrumb specs */
+// BREADCRUMBS */
 $list-breadcrumb-fontfamily: "FontAwesome";
 $list-breadcrumb-divider: "\f0da";
 $list-breadcrumb-spacingleft: 1px;
 $list-breadcrumb-spacingright: 5px;
 $list-breadcrumb-size: 13px;
 
-/* whitespace */
+// WHITESPACE */
 
 $baseLineHeight: 1.5em !default; //must be in em
 $baseFontSize: 15px !default; // must be px
 
-/*
- * em-ratio converts between em and px
- * to em    divide by this ratio
- * to px    mulitply by this ratio
- */
+// 
+//  * em-ratio converts between em and px
+//  * to em    divide by this ratio
+//  * to px    mulitply by this ratio
+// 
 $emRatio: $baseFontSize/$baseLineHeight;
 
 
@@ -389,7 +389,7 @@ $button-border-color-secondary: $gray-blue;
 
 $button-border-color-limited: #A0A0A0;
 
-/* action bars */
+// ACTION BARS */
 $action-bar-highlighted-background-color: $light-green;
 $action-bar-hovered-item-background-color: #C3ECA0;
 $action-bar-secondary-background-color: $light-blue;
@@ -497,9 +497,9 @@ $lozenge-color-selected-dark: $brand-dark;
     color: $color-text2;
 }
 
-/* primary link */
-/* used for the name of items in list */
-/* workspaces, files, etc. */
+// primary link */
+// used for the name of items in list */
+// workspaces, files, etc. */
 
 @mixin font-primary {
     font-size: 18px;
@@ -670,14 +670,14 @@ $lozenge-color-selected-dark: $brand-dark;
 }
 
 @mixin menu-triangle {
-/*     padding-right: 10px; */
-/*     background-image: url("/images/blue-menu-triangle.png"); */
-/*     background-position: right; */
-/*     background-repeat: no-repeat; */
+//     padding-right: 10px; */
+//     background-image: url("/images/blue-menu-triangle.png"); */
+//     background-position: right; */
+//     background-repeat: no-repeat; */
 }
 
-/* caret for menus */
-/* pointing: DOWN  */
+// caret for menus */
+// pointing: DOWN  */
 @mixin menu-triangle-glyph {
 	&:hover::after {
     	text-decoration: none !important;	
@@ -687,11 +687,11 @@ $lozenge-color-selected-dark: $brand-dark;
 		position: relative;
 		left: $caret-margin;
 		font-family: FontAwesome;
-		content: "\f0d7"; /* fa-caret-down */
+		content: "\f0d7"; // fa-caret-down */
 	}
 }
 
-/* generates caret with FA */
+// generates caret with FA */
 @mixin triangle-glyph($pointing_direction) {
 	
 	&::after {
@@ -704,7 +704,7 @@ $lozenge-color-selected-dark: $brand-dark;
 	}
 }
 
-/* outputs the FA glyph content for the 'caret' */
+// outputs the FA glyph content for the 'caret' */
 @mixin caret-glyph($pointing_direction) {
 
 	@if $pointing_direction == up {
@@ -719,7 +719,7 @@ $lozenge-color-selected-dark: $brand-dark;
 }
 
 
-/* generates a caret with css */
+// generates a caret with css */
 @mixin triangle($pointing_direction, $color, $width, $height) {
     width: 0;
    	height: 0;
@@ -742,11 +742,11 @@ $lozenge-color-selected-dark: $brand-dark;
 	}
 }
 
-/* ********* */
-/* used to generate the pill shapes used in sub nav and right-side nav tabs */
-/* call with: */
-/* min-width: min width of the pill */
-/* height: height of the pill. if none provided, defaults to 21px */
+// ********* */
+// used to generate the pill shapes used in sub nav and right-side nav tabs */
+// call with: */
+// min-width: min width of the pill */
+// height: height of the pill. if none provided, defaults to 21px */
 
 @mixin pill-tab($min-width, $height: $default-lozenge-height) {
     &:hover .lozenge {
@@ -879,19 +879,19 @@ $lozenge-color-selected-dark: $brand-dark;
 // MIXINS, CONTENT
 
 @mixin alert-error-icon {
-    content: "\f06a";  /* fa-exclamation-circle */
+    content: "\f06a";  // fa-exclamation-circle */
 }
 
 @mixin alert-warning-icon {
-    content: "\f071";  /* fa-exclamation-triangle */
+    content: "\f071";  // fa-exclamation-triangle */
 }
 
 @mixin alert-success-icon {
-    content: "\f058";  /* fa-check-circle */
+    content: "\f058";  // fa-check-circle */
 }
 
 @mixin alert-informational-icon {
-    content: "\f06a";  /* fa-exclamation-circle */
+    content: "\f06a";  // fa-exclamation-circle */
 }
 
 

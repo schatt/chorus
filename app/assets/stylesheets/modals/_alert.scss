@@ -2,7 +2,7 @@
 
 $alert-marker-width: 60px;
 
-/* general alert dialog styles */
+// general alert dialog styles */
 
 .alert {
     .errors {
@@ -11,8 +11,8 @@ $alert-marker-width: 60px;
     }
 
     .guts {
-        width: 500px;
-        max-width: 500px;
+        width: $default-dialog-width;
+        // max-width: 500px;
         background-color: $body-background-color;
 
         .content {
