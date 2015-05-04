@@ -55,11 +55,10 @@ input[type=radio] {
 }
 
 input[type=checkbox] {
-/*     margin: 5px 4px; */ /* to be deleted when final */
     margin: 5px 4px 5px 0;
 }
 
-/* form: red asterisk for required fields */
+// form: red asterisk for required fields */
 .required::after {
     content: "*";
     color: $required-marker-color;
@@ -87,7 +86,7 @@ img.disabled {
     @include opacity(0.25);
 }
 
-/* Prevent focus outline on scrollable elements */
+// Prevent focus outline on scrollable elements */
 .jspScrollable:focus {
     outline: none;
 }
