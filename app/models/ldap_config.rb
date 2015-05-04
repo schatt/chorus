@@ -106,7 +106,9 @@ class LdapConfig
         attribute = prop.keys.first
         nested_props = prop.values.first
         nested_props.each do |nested_prop|
-          raise LdapClient::LdapNotCorrectlyConfigured.new("Missing value for property ldap.#{attribute}.#{nested_prop} in ldap.properties file") if @config["ldap"][attribute][nested_prop].nil?
+          if @config["ldap"][attribute].nil? || @config["ldap"][attribute][nested_prop].nil?
+            raise LdapClient::LdapNotCorrectlyConfigured.new("Missing value for property ldap.#{attribute}.#{nested_prop} in ldap.properties file")
+          end
         end
       end
     end
