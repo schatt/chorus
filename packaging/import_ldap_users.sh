@@ -8,15 +8,17 @@ bin=`cd "$bin"; pwd`
 
 . "$bin"/chorus-config.sh
 
-$CHORUS_HOME/postgres/bin/pg_ctl -D ./postgres-db  status | grep "is running"  > /dev/null
+export PATH=$PATH:$CHORUS_HOME/bin
 
-if [ "$?" != 0 ]; then
+$CHORUS_HOME/postgres/bin/pg_ctl -D $CHORUS_HOME/postgres-db  status | grep "is running"  > /dev/null
+
+if [ $? != 0 ]; then
     echo "Chorus must be running before importing LDAP users. Please start Chorus and try again."
     exit 1
 fi
 
-echo "Importing LDAP users to CHorus"
+echo "Importing LDAP users to Chorus"
 echo "==============================\n"
-bundle exec rake ldap:import_users
+$RAKE ldap:import_users
 exit 0
 
