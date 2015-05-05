@@ -1,6 +1,7 @@
 require_relative 'jdbc_overrides/teradata_overrides'
 require_relative 'jdbc_overrides/sqlserver_overrides'
 require_relative 'jdbc_overrides/mariadb_overrides'
+require_relative 'jdbc_overrides/mysql_overrides'
 require_relative 'jdbc_overrides/hive2_overrides'
 
 module JdbcOverrides
@@ -25,6 +26,7 @@ module JdbcOverrides
       when /jdbc:teradata:/ then JdbcOverrides::Teradata
       when /jdbc:sqlserver:/ then JdbcOverrides::SqlServer
       when /jdbc:mariadb:/ then JdbcOverrides::Mariadb
+      when /jdbc:mysql:/ then JdbcOverrides::MySQL
       when /jdbc:hive2:/ then JdbcOverrides::Hive2
       else nil
     end
