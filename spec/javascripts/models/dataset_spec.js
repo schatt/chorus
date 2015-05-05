@@ -591,10 +591,26 @@ describe("chorus.models.Dataset", function() {
         });
     });
 
+    describe("#quotedSchemaName", function() {
+        beforeEach(function() {
+            this.dataset.set({objectName: "My_Object"});
+        });
+
+        it("uses the ensureDoubleQuoted helper", function() {
+            expect(this.dataset.quotedSchemaName()).toBe(chorus.Mixins.dbHelpers.ensureDoubleQuoted(this.dataset.get("schema").name));
+        });
+    });
+
     describe("#toText", function() {
         context("with lowercase names", function() {
             beforeEach(function() {
-                this.dataset.set({objectName: "tabler", schema: {name: "party_schema"} });
+                this.dataset.set({objectName: "tabler",
+                                  schema: {
+                                      name: "party_schema",
+                                      dataSource: {
+                                            entityType: 'data_source'
+                                      }
+                                  }});
             });
 
             it("formats the string to put into the sql editor", function() {
@@ -604,7 +620,13 @@ describe("chorus.models.Dataset", function() {
 
         context("with uppercase names", function() {
             beforeEach(function() {
-                this.dataset.set({objectName: "Tabler", schema: {name: "PartyMAN"}});
+                this.dataset.set({objectName: "Tabler",
+                    schema: {
+                        name: "PartyMAN",
+                        dataSource: {
+                            entityType: 'data_source'
+                        }
+                    }});
             });
 
             it("puts quotes around the uppercase names", function() {
@@ -619,6 +641,27 @@ describe("chorus.models.Dataset", function() {
 
             it("creates an appropriate string (trimmed, remove semicolon, and alias to pg-quoted CV name)", function() {
                 expect(this.dataset.toText()).toBe('(SELECT a,b FROM xyz) AS "ChorusView"');
+            });
+        });
+
+        context("when a dataset doesn't want quotes (e.g. hive)", function() {
+            beforeEach(function() {
+                this.dataset.set({objectName: "can",
+                    schema: {
+                        name: "trash",
+                        dataSource: {
+                            // Hive hates quotes.
+                            entityType: 'jdbc_hive_data_source'
+                        }
+                    }});
+            });
+
+            it("uses the ensureNotDoubleQuoted helper", function() {
+                expect(this.dataset.quotedName()).toBe(chorus.Mixins.dbHelpers.ensureNotDoubleQuoted(this.dataset.name()));
+            });
+
+            it("formats the string to put into the sql editor", function() {
+                expect(this.dataset.toText()).toBe('trash.can');
             });
         });
     });

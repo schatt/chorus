@@ -48,6 +48,24 @@ describe("chorus.models.DatabaseColumn", function() {
                         expect(this.model.toText()).toBe('"Col"');
                     });
                 });
+                context("when a dataset doesn't want quotes (e.g. hive)", function() {
+                    beforeEach(function() {
+                        this.model.set({name: "col"});
+                        this.model.dataset.set({
+                            objectName: "can",
+                            schema: {
+                                name: "trash",
+                                dataSource: {
+                                    // Hive hates quotes.
+                                    entityType: 'jdbc_hive_data_source'
+                                }
+                            }
+                        });
+                    });
+                    it("doesn't puts quotes around the uppercase names", function() {
+                        expect(this.model.toText()).toBe('col');
+                    });
+                });
             });
 
             describe("#typeClass", function() {

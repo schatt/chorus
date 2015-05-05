@@ -16,14 +16,24 @@ chorus.models.DatabaseColumn = chorus.models.Base.extend({
         });
     },
 
+    useQuotes: function() {
+        return !this.dataset.isJdbcHive();
+    },
+
     toText: function() {
-        return this.ensureDoubleQuoted(this.get("name"));
+        return this.useQuotes()? this.ensureDoubleQuoted(this.get("name")) : this.ensureNotDoubleQuoted(this.get("name"));
     },
 
     quotedName: function() {
-        return this.dataset &&
-            this.get("name") &&
-            this.ensureDoubleQuoted(this.dataset.selectName(), this.get("name"));
+        if (this.useQuotes()) {
+            return this.dataset &&
+                this.get("name") &&
+                this.ensureDoubleQuoted(this.dataset.selectName(), this.get("name"));
+        } else {
+            return this.dataset &&
+                this.get("name") &&
+                this.ensureNotDoubleQuoted(this.dataset.selectName(), this.get("name"));
+        }
     }
 }, {
     humanTypeMap: {

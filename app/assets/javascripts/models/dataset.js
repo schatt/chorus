@@ -46,6 +46,10 @@ chorus.models.Dataset = chorus.models.Base.include(
         return this.dataSource() && this.dataSource().isJdbc();
     },
 
+    isJdbcHive: function() {
+        return this.dataSource() && this.dataSource().isJdbcHive();
+    },
+
     isGreenplum: function() {
         return this.dataSource().isGreenplum();
     },
@@ -195,16 +199,25 @@ chorus.models.Dataset = chorus.models.Base.include(
         this.collection && this.fetch();
     },
 
+    useQuotes: function() {
+        return !this.isJdbcHive();
+    },
+
     quotedName: function() {
-        return this.ensureDoubleQuoted(this.name());
+        return (this.useQuotes())? this.ensureDoubleQuoted(this.name()) : this.ensureNotDoubleQuoted(this.name());
+    },
+
+    quotedSchemaName: function() {
+        return (this.useQuotes())? this.ensureDoubleQuoted(this.schema().name()) : this.ensureNotDoubleQuoted(this.schema().name());
     },
 
     toText: function() {
         if (this.has("query")) {
             var query = this.get("query").trim().replace(/;$/, "").trim();
-            return "(" + query + ") AS " + this.ensureDoubleQuoted(this.name());
+            return "(" + query + ") AS " + this.quotedName();
         } else {
-            return this.ensureDoubleQuoted(this.schema().name()) + '.' + this.ensureDoubleQuoted(this.name());
+
+            return this.quotedSchemaName() + '.' + this.quotedName();
         }
     },
 
@@ -229,7 +242,7 @@ chorus.models.Dataset = chorus.models.Base.include(
         if (this.has("query")) {
             return "(" + this.get("query") + ")";
         }
-        return this.ensureDoubleQuoted(this.schema().name()) + "." + this.quotedName();
+        return this.quotedSchemaName() + "." + this.quotedName();
     },
 
     alias: function() {
@@ -242,7 +255,7 @@ chorus.models.Dataset = chorus.models.Base.include(
 
     fromClause: function() {
         if (this.aliased()) {
-            return this.fromClauseBody() + " AS " + this.ensureDoubleQuoted(this.alias());
+            return this.fromClauseBody() + " AS " + ((this.useQuotes())? this.ensureDoubleQuoted(this.alias()) :  this.ensureNotDoubleQuoted(this.alias()));
         }
         return this.fromClauseBody();
     },
