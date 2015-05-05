@@ -113,3 +113,8 @@ img.disabled {
         width: 8px;
     }
 }
+
+// Removes the MSIE clear-button imposed on all text inputs
+::-ms-clear {
+  display: none;
+}
