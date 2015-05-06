@@ -448,6 +448,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
     context("when gnip is configured", function() {
         beforeEach(function() {
             chorus.models.Config.instance().set({ gnipConfigured: true });
+            this.dialog.render();
         });
 
         it("shows the 'Register an existing GNIP data source' option", function() {
@@ -494,6 +495,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
         beforeEach(function() {
             this.dialog.$("select.data_sources").val(this.dialog.$("select.data_sources option:last").val());
             chorus.models.Config.instance().set({ gnipConfigured: true, gnipUrl: "www.example.com", gnipPort: 433, oracleConfigured:true });
+            this.dialog.render();
         });
 
         it("hitting enter should submit the form", function() {
