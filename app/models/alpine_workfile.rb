@@ -31,7 +31,7 @@ class AlpineWorkfile < Workfile
   end
 
   def data_sources
-    execution_locations.map(&:data_source)
+    execution_locations.map(&:data_source).compact
   end
 
   def update_from_params!(params)
