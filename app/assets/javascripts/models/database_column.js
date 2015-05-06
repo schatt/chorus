@@ -17,7 +17,7 @@ chorus.models.DatabaseColumn = chorus.models.Base.extend({
     },
 
     useQuotes: function() {
-        return !this.dataset.isJdbcHive();
+        return this.dataset && !this.dataset.isJdbcHive();
     },
 
     toText: function() {
