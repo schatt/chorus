@@ -1,0 +1,27 @@
+<div>
+    <label class="required gnip_host" name="host" for="streamUrl">
+        {{t "data_sources.dialog.gnip_url"}}
+        <span class="fa fa-question-circle help" data-text='{{t "data_sources.dialog.gnip_help_text"}}'></span>
+    </label>
+    <input class="gnip_host" type="text" id="streamUrl" name="streamUrl" maxlength="255"/>
+</div>
+
+<div class="multiple_fields">
+    <div class="width_half_left">
+        <label class="gnip_username required" name="username" for="gnip_username">{{t "data_sources.dialog.gnip_username"}}</label>
+    </div>
+
+    <div class="width_half_right">
+        <label class="gnip_password required" name="password" for="gnip_password">{{t "data_sources.dialog.gnip_password"}}</label>
+    </div>
+</div>
+
+<div class="multiple_fields">
+    <div class="width_half_left">
+        <input class="gnip_username" type="text" id="gnip_username" name="username" maxlength="255"/>
+    </div>
+
+    <div class="width_half_right">
+        <input class="gnip_password" type="password" id="gnip_password" name="password" maxlength="255" autocomplete="off"/>
+    </div>
+</div>

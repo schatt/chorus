@@ -13,7 +13,7 @@ chorus.Mixins.dbHelpers = {
     ensureNotDoubleQuoted: function() {
         function unencode(name) {
             var doubleQuoted = name.match(chorus.ValidationRegexes.DoubleQuoted());
-            return doubleQuoted ? name.substring(1, name.length - 1) :  name;
+            return doubleQuoted ? name.substring(1, name.length - 1) : name;
         }
 
         return _.map(arguments, function(arg) {

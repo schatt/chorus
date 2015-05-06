@@ -2,10 +2,10 @@
 
 $dialog-girdle-padding-top: 10px;
 
-/* GENERAL DIALOG STYLES */
+// GENERAL DIALOG STYLES */
 
-/* .girdle wraps the content of the dialog popup */
-/* and sets the overall margins for the content area */
+// .girdle wraps the content of the dialog popup */
+// and sets the overall margins for the content area */
 .popup .girdle {
     padding: $dialog-girdle-padding-top $dialog-padding $dialog-padding $dialog-padding;
     border: none;
@@ -125,17 +125,11 @@ $dialog-girdle-padding-top: 10px;
             border-bottom: $border-canon;
         }
 
-/* retiring this class */ /* to be removed when final */
-/*         .sub_content { */
-/*             padding: 10px $dialog-padding; */
-/*         } */
-
-
         .loading_section {
             padding: 20px;
         }
 
-        /* .form_controls { margin: 0; } */
+        // .form_controls { margin: 0; } */
     }
 
     .sub_header {
@@ -174,7 +168,7 @@ $dialog-girdle-padding-top: 10px;
     }
 }
 
-/* replace and delete this one with the one following it for more simplicity*/
+// replace and delete this one with the one following it for more simplicity*/
 .icon-add,
 .icon-remove {
     &.fa {
@@ -189,8 +183,8 @@ $dialog-girdle-padding-top: 10px;
     }
 }
 
-/* ************* */
-/* dialog widths */
+// ************* */
+// dialog widths */
 div.dialog {
     width: $default-dialog-width;
     // interim fix for background of dialogs
@@ -202,7 +196,7 @@ div.dialog {
 }
 
 
-/*Custom Dialog widths */
+// Custom Dialog widths */
 
 .dialog {
     &.data_source_permissions {
@@ -215,7 +209,7 @@ div.dialog {
 }
 
 
-// to do: work out what should be in show_image.scss and what should be here */
+// TODO: work out what should be in show_image.scss and what should be here */
 .dialog.show_image {
     width: 100%;
     min-width: 600px;

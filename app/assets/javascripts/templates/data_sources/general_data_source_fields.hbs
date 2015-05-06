@@ -1,5 +1,11 @@
-<label class="required">{{t "data_sources.dialog.data_source_name"}}</label>
-<input type="text" name="name" maxlength="64" value="{{name}}" tabindex="1"/>
+<div class="general_data_source_fields">
+    <div>
+        <label class="required" for="name">{{t "data_sources.dialog.data_source_name"}}</label>
+        <input type="text" id="name" name="name" maxlength="64" value="{{name}}" tabindex="1"/>
+    </div>
 
-<label>{{t "data_sources.dialog.description"}}</label>
-<textarea rows="3" name="description" maxlength="4095" tabindex="1"/>{{description}}</textarea>
+    <div>
+        <label for="description">{{t "data_sources.dialog.description"}}</label>
+        <textarea id="description" name="description" rows="3" maxlength="4095" tabindex="2">{{description}}</textarea>
+    </div>
+</div>

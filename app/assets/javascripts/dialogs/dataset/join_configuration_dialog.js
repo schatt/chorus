@@ -3,7 +3,7 @@ chorus.dialogs.JoinConfiguration = chorus.dialogs.Base.extend({
     templateName: "join_configuration",
     additionalClass: "with_sub_header",
     title: t("dataset.manage_join_tables.title"),
-    useLoadingSection:true,
+    useLoadingSection: true,
 
     subviews: {
         ".source_columns": "sourceColumnsSelect",

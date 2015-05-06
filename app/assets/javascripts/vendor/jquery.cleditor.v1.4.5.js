@@ -840,9 +840,13 @@
             .appendTo($main);
 
         // Load the iframe document content
-        var contentWindow = $frame[0].contentWindow,
-          doc = editor.doc = contentWindow.document,
-          $doc = $(doc);
+        var contentWindow = $frame[0].contentWindow;
+        
+        //  doc = editor.doc = contentWindow.document,
+        //  $doc = $(doc);
+        
+        doc = editor.doc = contentWindow.document;
+        var $doc = $(doc);
 
         doc.open();
         doc.write(

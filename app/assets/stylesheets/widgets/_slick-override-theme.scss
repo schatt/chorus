@@ -20,14 +20,14 @@
   background: none;
 }
 
-/* from _slick.grid.scss */
+// from _slick.grid.scss */
 .slick-sort-indicator-desc,
 .slick-sort-indicator-asc {
   background-image: none;
 }
 
 .slick-sort-indicator-desc {
-/*   @include triangle-css(down, $default-font-color, 10px, 5px); */
+//   @include triangle-css(down, $default-font-color, 10px, 5px); */
 	font-style: normal;
 	@include triangle-glyph(down);
 	color: $default-font-color;
@@ -35,7 +35,7 @@
 }
 
 .slick-sort-indicator-asc {
-/*   @include triangle-css(up, $default-font-color, 10px, 5px); */
+//   @include triangle-css(up, $default-font-color, 10px, 5px); */
 	font-style: normal;
 	@include triangle-glyph(up);
 	color: $default-font-color;
@@ -47,8 +47,8 @@
 
 .slick-sort-indicator {
   display: inline-block;
-/*   width: auto; */
-/*   height: auto; */
+//   width: auto; */
+//   height: auto; */
   margin-left: auto;
   right: 10px;
   top: 2px;

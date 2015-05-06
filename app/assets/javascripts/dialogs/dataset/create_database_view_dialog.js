@@ -5,7 +5,7 @@ chorus.dialogs.CreateDatabaseView = chorus.dialogs.Base.extend({
     title: t("create_database_view.title"),
 
     events: {
-        "submit form" : "performValidation",
+        "submit form": "performValidation",
         "click button.submit": "performValidation"
     },
 

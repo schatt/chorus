@@ -17,37 +17,37 @@ $fieldset-width : $default-dialog-width - 2 * $dialog-padding-leftRight;
       display: inline-block;
     }
 
-    label[name=host], input[name=host],
-    label[name=jobTrackerHost], input[name=jobTrackerHost],
-    label[name=hiveKerberosPrincipal], input[name=hiveKerberosPrincipal],
-    label[name=hiveKerberosKeytabLocation], input[name=hiveKerberosKeytabLocation]{
-        width: $hostname-width;
-    }
+//     label[name=host], input[name=host],
+//     label[name=jobTrackerHost], input[name=jobTrackerHost],
+//     label[name=hiveKerberosPrincipal], input[name=hiveKerberosPrincipal],
+//     label[name=hiveKerberosKeytabLocation], input[name=hiveKerberosKeytabLocation]{
+//         width: $hostname-width;
+//     }
 
-    input[name=database] {
-        width: $hostname-width;
-    }
+//     input[name=database] {
+//         width: $hostname-width;
+//     }
 
-    .username, .group_list, .gnip_username, .gnip_password {
-        width: $account_width;
-    }
+//     .username, .group_list, .gnip_username, .gnip_password {
+//         width: $account_width;
+//     }
 
-    .group_list, .gnip_password {
-        width: $fieldset-width - $account_width - $dialog-padding-leftRight - 2px;
-        margin-left: $input-spacing;
-    }
+//     .group_list, .gnip_password {
+//         width: $fieldset-width - $account_width - $dialog-padding-leftRight - 2px;
+//         margin-left: $input-spacing;
+//     }
 
-    label[name=port], input[name=port],
-    label[name=jobTrackerPort], input[name=jobTrackerPort] {
-        width: $fieldset-width - $hostname-width - $dialog-padding-leftRight - 2px;
-        margin-left: $input-spacing;
-    }
+//     label[name=port], input[name=port],
+//     label[name=jobTrackerPort], input[name=jobTrackerPort] {
+//         width: $fieldset-width - $hostname-width - $dialog-padding-leftRight - 2px;
+//         margin-left: $input-spacing;
+//     }
 
-    select, .ui-selectmenu-button .ui-button {
-        width: 300px;
-    }
-
-    .connection_parameters_container {
-      padding-top: 5px;
-    }
+//     select, .ui-selectmenu-button .ui-button {
+//         width: 300px;
+//     }
+// 
+//     .connection_parameters_container {
+//       padding-top: 5px;
+//     }
 }

@@ -1,4 +1,4 @@
-<div class='facts'>
+<div class="facts">
     <span class="label">{{t "workspace.owner"}}:</span>
     <a class="owner" title="{{ownerName}}" href="{{ownerShowUrl}}">{{ownerName}}</a>
 
@@ -13,7 +13,7 @@
 
 {{#unless limitMilestones}}
 <div class="milestones">
-    <div class='target_date'>
+    <div class="target_date">
         <span class="label">Target:</span>
         {{#if projectTargetDate}}
             {{relativeTimestamp projectTargetDate}}
@@ -24,9 +24,9 @@
 
 
     <span class="label">{{t 'workspace.project.progress.label'}}</span>
-    <div class='progress_container'>
+    <div class="progress_container">
         <div class="progress {{projectStatus}}" style="width: {{milestoneProgress}}%;"></div>
     </div>
-    <a class='ratio' href="{{milestonesUrl}}">{{milestoneCompletedCount}} / {{milestoneCount}}</a>
+    <a class="ratio" href="{{milestonesUrl}}">{{milestoneCompletedCount}} / {{milestoneCount}}</a>
 </div>
 {{/unless}}

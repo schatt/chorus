@@ -1,7 +1,7 @@
 chorus.dialogs.EditProjectStatus = chorus.dialogs.Base.include(chorus.Mixins.DialogFormHelpers).extend({
     constructorName: "ProjectStatus",
-    templateName: "edit_project_status",
-    title: "Edit Project Status",
+    templateName: "dialogs/edit_project_status",
+    title:  t("workspace.update_status.dialog.title"),
 
     statuses: ['on_track', 'needs_attention', 'at_risk'],
 

@@ -8,9 +8,9 @@ chorus.dialogs.Base = chorus.Modal.extend ({
 
         this.preRender();
 
-        var header = $("<div id='dialog_header' class='dialog_header'/>");
-        var content = $("<div id='dialog_content' class='dialog_content'/>");
-        var errors = $("<div id='dialog_errors' class='errors hidden'/>");
+        var header = $("<div id='dialog_header' class='dialog_header'/></div>");
+        var errors = $("<div id='dialog_errors' class='errors hidden'/></div>");
+        var content = $("<div id='dialog_content' class='dialog_content'/></div>");
 
         this.events = this.events || {};
 
@@ -19,12 +19,14 @@ chorus.dialogs.Base = chorus.Modal.extend ({
         header.html($("<h1/>").text(_.result(this, 'title')));
         content.html(this.template(this.context()));
         content.attr("data-template", this.className);
-
+        
         $(this.el).
             empty().
             append(header).
             append(errors).
-            append(content).
+            append(content);
+
+        $(this.el).
             addClass(this.className).
             addClass("dialog").
             addClass(this.additionalClass || "");
@@ -37,7 +39,7 @@ chorus.dialogs.Base = chorus.Modal.extend ({
 //             addClass(this.className).
 //             addClass("dialog").
 //             addClass(this.additionalClass || "");
-// intending to move the errors into the girdle node.
+// TODO intending to move the errors into the girdle node.
 
 
         this.delegateEvents();

@@ -4,7 +4,7 @@ chorus.dialogs.PreviewColumns = chorus.dialogs.Base.extend({
     templateName: "preview_columns",
     additionalClass: "with_sub_header",
     title: t("dataset.manage_join_tables.title"),
-    useLoadingSection:true,
+    useLoadingSection: true,
 
     setup: function() {
         this.resource = this.collection = this.model.columns();

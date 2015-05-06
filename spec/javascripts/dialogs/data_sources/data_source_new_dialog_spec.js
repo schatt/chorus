@@ -65,7 +65,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("un-collapses the 'register an existing data source'", function() {
-                expect(this.dialog.$(".data_sources_form").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$(".data_source_fields").not(".collapsed").length).toBe(1);
                 expect(this.dialog.$(".register_existing_greenplum")).not.toHaveClass("collapsed");
             });
 
@@ -111,7 +111,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
                 });
 
                 it("should hides all forms", function() {
-                    expect(this.dialog.$(".data_sources_form")).toHaveClass("collapsed");
+                    expect(this.dialog.$(".data_source_fields")).toHaveClass("collapsed");
                 });
 
                 it("should disable the submit button", function() {
@@ -127,7 +127,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("un-collapses the 'register an existing data source'", function() {
-                expect(this.dialog.$(".data_sources_form").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$(".data_source_fields").not(".collapsed").length).toBe(1);
                 expect(this.dialog.$(".register_existing_postgres")).not.toHaveClass("collapsed");
             });
 
@@ -173,7 +173,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
                 });
 
                 it("should hides all forms", function() {
-                    expect(this.dialog.$(".data_sources_form")).toHaveClass("collapsed");
+                    expect(this.dialog.$(".data_source_fields")).toHaveClass("collapsed");
                 });
 
                 it("should disable the submit button", function() {
@@ -183,14 +183,14 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
         });
 
-        describe("selecting the 'HAWQ' option", function() {
+        describe("> selecting the 'HAWQ' option", function() {
             beforeEach(function() {
                 this.dialog.$(".data_sources").val("register_existing_hawq").change();
             });
 
             it("un-collapses the 'register an existing data source'", function() {
-                expect(this.dialog.$(".data_sources_form").not(".collapsed").length).toBe(1);
-                expect(this.dialog.$(".register_existing_greenplum")).not.toHaveClass("collapsed");
+                expect(this.dialog.$(".data_source_fields").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$(".register_existing_hawq")).not.toHaveClass("collapsed");
             });
 
             it("enables the submit button", function() {
@@ -198,20 +198,20 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("uses 'postgres' as the default database name", function() {
-                expect(this.dialog.$(".register_existing_greenplum input[name=dbName]").val()).toBe("postgres");
+                expect(this.dialog.$(".register_existing_hawq input[name=dbName]").val()).toBe("postgres");
             });
 
             describe("filling out the form", function() {
                 beforeEach(function() {
-                    this.dialog.$(".register_existing_greenplum input[name=name]").val("DataSource_Name");
-                    this.dialog.$(".register_existing_greenplum textarea[name=description]").val("DataSource Description");
-                    this.dialog.$(".register_existing_greenplum input[name=host]").val("foo.bar");
-                    this.dialog.$(".register_existing_greenplum input[name=port]").val("1234");
-                    this.dialog.$(".register_existing_greenplum input[name=dbUsername]").val("user");
-                    this.dialog.$(".register_existing_greenplum input[name=dbPassword]").val("my_password");
-                    this.dialog.$(".register_existing_greenplum input[name=dbName]").val("foo");
+                    this.dialog.$(".register_existing_hawq input[name=name]").val("DataSource_Name");
+                    this.dialog.$(".register_existing_hawq textarea[name=description]").val("DataSource Description");
+                    this.dialog.$(".register_existing_hawq input[name=host]").val("foo.bar");
+                    this.dialog.$(".register_existing_hawq input[name=port]").val("1234");
+                    this.dialog.$(".register_existing_hawq input[name=dbUsername]").val("user");
+                    this.dialog.$(".register_existing_hawq input[name=dbPassword]").val("my_password");
+                    this.dialog.$(".register_existing_hawq input[name=dbName]").val("foo");
 
-                    this.dialog.$(".register_existing_greenplum input[name=name]").trigger("change");
+                    this.dialog.$(".register_existing_hawq input[name=name]").trigger("change");
                 });
 
                 it("gets the fieldValues", function() {
@@ -233,7 +233,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
                 });
 
                 it("should hides all forms", function() {
-                    expect(this.dialog.$(".data_sources_form")).toHaveClass("collapsed");
+                    expect(this.dialog.$(".data_source_fields")).toHaveClass("collapsed");
                 });
 
                 it("should disable the submit button", function() {
@@ -272,7 +272,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("un-collapses the 'register a hadoop file system' form", function() {
-                expect(this.dialog.$("div.data_sources_form").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$("div.data_source_fields").not(".collapsed").length).toBe(1);
                 expect(this.dialog.$("div.register_existing_hdfs")).not.toHaveClass("collapsed");
             });
 
@@ -345,7 +345,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("un-collapses the 'register an existing data source'", function() {
-                expect(this.dialog.$(".data_sources_form").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$(".data_source_fields").not(".collapsed").length).toBe(1);
                 expect(this.dialog.$(".register_existing_jdbc")).not.toHaveClass("collapsed");
             });
 
@@ -384,7 +384,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
                 });
 
                 it("should hides all forms", function() {
-                    expect(this.dialog.$(".data_sources_form")).toHaveClass("collapsed");
+                    expect(this.dialog.$(".data_source_fields")).toHaveClass("collapsed");
                 });
 
                 it("should disable the submit button", function() {
@@ -406,7 +406,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             it("un-collapses the 'register an existing data source'", function() {
-                expect(this.dialog.$(".data_sources_form").not(".collapsed").length).toBe(1);
+                expect(this.dialog.$(".data_source_fields").not(".collapsed").length).toBe(1);
                 expect(this.dialog.$(".register_existing_oracle")).not.toHaveClass("collapsed");
             });
 
@@ -534,7 +534,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
                         expect(this.dialog.closeModal).toHaveBeenCalled();
                     });
 
-                    it('displays a toast message', function() {
+                    it('> displays a toast message', function() {
                         spyOn(chorus, 'toast');
                         this.server.lastCreate().succeed();
                         expect(chorus.toast).toHaveBeenCalledWith('data_sources.add.toast',
@@ -688,7 +688,7 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             beforeEach(function() {
                 this.dialog.$("select.data_sources").val("register_existing_hawq").change();
 
-                var section = this.dialog.$(".register_existing_greenplum");
+                var section = this.dialog.$(".register_existing_hawq");
                 section.find("input[name=name]").val("DataSource_Name");
                 section.find("textarea[name=description]").val("DataSource Description");
                 section.find("input[name=host]").val("foo.bar");
@@ -805,6 +805,15 @@ describe("chorus.dialogs.DataSourcesNew", function() {
             });
 
             testUpload();
+
         });
     });
+
+
+    afterEach(function() {
+        this.selectMenuStub = "";
+        this.dialog.teardown();
+    });
+
+
 });

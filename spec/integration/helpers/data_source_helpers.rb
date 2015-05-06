@@ -7,7 +7,7 @@ module DataSourceHelpers
     page.find("#data_sources-button span.ui-selectmenu-text").should have_content("Select…")
     select_item("select.data_sources", value)
     page.find("#data_sources-button span.ui-selectmenu-text").should have_no_content("Select…")
-    within ".data_sources_form.#{value}" do
+    within ".data_source_fields.#{value}" do
       yield
     end
   end

@@ -42,21 +42,16 @@ $shuttle-list-item-height: 40px;
             width: 70%;
         }
 
-/*         > div { */
-/*             padding: 4px 0; */
-/*         } */
+//         > div { */
+//             padding: 4px 0; */
+//         } */
 
-/*     } */
+//     } */
         
         .selected_title,
         .selected_count {
             font-weight: $semibold;
         }
-
-/* to be removed when final         */
-/*         .selected_title { */
-/*             color: $color-text3; */
-/*         } */
 
         .selected_count {
             padding-left: 5px;
@@ -125,7 +120,7 @@ $shuttle-list-item-height: 40px;
             }
         }
 
-/* available = left-side of the 2column list */
+// available = left-side of the 2column list */
         &.available {
             left: 0;
             border-right: $border-canon;
@@ -143,24 +138,24 @@ $shuttle-list-item-height: 40px;
                 }
 
                 &.added {
-                    /* css to 'remove' a user from the available list when added */
+                    // css to 'remove' a user from the available list when added */
                     display: none;
 
-                   /*  when above is enabled, remove the following 4 */
-/*                     .checkmark { */
-/*                         display: inherit; */
-/*                     } */
-/*                     a { */
-/*                         display: none; */
-/*                     } */
-/*                     .was_added { */
-/*                         display: inline; */
-/*                     } */
+//                     when above is enabled, remove the following 4 */
+//                     .checkmark { */
+//                         display: inherit; */
+//                     } */
+//                     a { */
+//                         display: none; */
+//                     } */
+//                     .was_added { */
+//                         display: inline; */
+//                     } */
                 }
 
-/*                 a { */
-/*                     display: inline; */
-/*                 } */
+//                 a { */
+//                     display: inline; */
+//                 } */
 
                 .was_added {
                     display: none;
@@ -168,7 +163,7 @@ $shuttle-list-item-height: 40px;
             }
         }
         
-/* selected = right-side of the 2column list */
+// selected = right-side of the 2column list */
         &.selected {
             left: 50%;
 

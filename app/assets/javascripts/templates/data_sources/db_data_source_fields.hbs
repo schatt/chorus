@@ -1,6 +1,25 @@
-<label class="required" name="host">{{t "data_sources.dialog.host"}}</label>
-<label class="required" class="port" name="port">{{t "data_sources.dialog.port"}}</label>
-<input type="text" name="host" value="{{host}}" tabindex="1"/>
-<input type="text" class="port" name="port" value="{{port}}" tabindex="1"/>
-<label class="required" name="dbName">{{t "data_sources.dialog.database_name"}}</label>
-<input type="text" name="dbName" value="{{dbName}}" tabindex="1"/>
+    <div class="multiple_fields">
+        <div class="width_wide">
+            <label class="required" name="host" for="host">{{t "data_sources.dialog.host"}}</label>
+        </div>
+    
+        <div class="width_small">
+            <label class="required" class="port" name="port" for="port">{{t "data_sources.dialog.port"}}</label>
+        </div>
+    </div>
+
+    <div class="multiple_fields">
+        <div class="width_wide">
+            <input type="text" id="host" name="host" value="{{host}}" tabindex="6"/>
+        </div>
+    
+        <div class="width_small">
+            <input type="text" id="port" class="port" name="port" value="{{port}}" tabindex="7"/>
+        </div>
+    </div>
+
+
+<div>
+    <label class="required" name="dbName">{{t "data_sources.dialog.database_name"}}</label>
+    <input type="text" name="dbName" value="{{dbName}}" tabindex="8"/>
+</div>

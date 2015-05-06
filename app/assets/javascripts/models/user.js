@@ -6,9 +6,9 @@ chorus.models.User = chorus.models.Base.extend({
     nameFunction: 'displayName',
     entityType: 'user',
 
-    workspaces:function () {
+    workspaces: function () {
         if (!this._workspaces) {
-            this._workspaces = new chorus.collections.WorkspaceSet([], { userId: this.get("id") });
+            this._workspaces = new chorus.collections.WorkspaceSet([], {userId: this.get("id")});
             this._workspaces.bind("reset", function () {
                 this.trigger("change");
             }, this);
@@ -24,25 +24,25 @@ chorus.models.User = chorus.models.Base.extend({
         return this._activeWorkspaces;
     },
 
-    declareValidations:function (newAttrs) {
+    declareValidations: function (newAttrs) {
         this.require('firstName', newAttrs);
         this.require('lastName', newAttrs);
         this.require('username', newAttrs);
         this.requireValidEmailAddress('email', newAttrs);
 
-        if(!this.ldap){
+        if (!this.ldap){
             this.requireConfirmationForChange('password', newAttrs);
         }
     },
 
-    requireConfirmationForChange:function (name, newAttrs) {
+    requireConfirmationForChange: function (name, newAttrs) {
         if (this.isNew() || (newAttrs && newAttrs.hasOwnProperty(name))) {
             this.require(name, newAttrs);
             this.requireConfirmation(name, newAttrs);
         }
     },
 
-    hasImage:function () {
+    hasImage: function () {
         return true;
     },
 
@@ -65,7 +65,7 @@ chorus.models.User = chorus.models.Base.extend({
         return currentUser.isAdmin() || this.get("username") === currentUser.get("username");
     },
 
-    currentUserCanDelete : function() {
+    currentUserCanDelete: function() {
         var currentUser = chorus.session.user();
         return currentUser.isAdmin() && this.get("username") !== currentUser.get("username");
     },
@@ -74,29 +74,29 @@ chorus.models.User = chorus.models.Base.extend({
         return !!this.get("admin");
     },
 
-    picklistImageUrl:function () {
+    picklistImageUrl: function () {
         return this.fetchImageUrl();
     },
 
-    displayName:function () {
+    displayName: function () {
         if (!this.get('firstName') && !this.get('lastName') && this.get('fullName')) {
             return this.get('fullName');
         }
         return [this.get("firstName"), this.get("lastName")].join(' ');
     },
 
-    displayShortName:function (length) {
+    displayShortName: function (length) {
         length = length || 20;
 
         var name = this.displayName();
         return (name.length < length) ? name : this.get("firstName") + " " + this.get("lastName")[0] + ".";
     },
 
-    maxImageSize:function () {
+    maxImageSize: function () {
         return chorus.models.Config.instance().get("fileSizesMbUserIcon");
     },
 
-    attrToLabel:{
+    attrToLabel: {
         "email":"users.email",
         "firstName":"users.first_name",
         "lastName":"users.last_name",

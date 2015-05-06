@@ -862,8 +862,20 @@ chorus.pages.StyleGuidePage.SiteElementsView = chorus.views.Bare.extend({
                 dataSource: this.models.gpdbDataSource
             }),
             
-            "Edit Data Source": new chorus.dialogs.DataSourceEdit({
+            "Edit Data Source (GPDB)": new chorus.dialogs.DataSourceEdit({
                 model: this.models.gpdbDataSource
+            }),
+
+            "Edit Data Source (ORACLE)": new chorus.dialogs.DataSourceEdit({
+                model: this.models.oracleDataSource
+            }),
+
+            "Edit Data Source (HDFS)": new chorus.dialogs.DataSourceEdit({
+                model: this.models.hdfsDataSource
+            }),
+
+            "Edit Data Source (GNIP)": new chorus.dialogs.DataSourceEdit({
+                model: this.models.gnipDataSource
             }),
 
             "Dataset Download": new chorus.dialogs.DatasetDownload({ pageModel: this.models.dataset}),

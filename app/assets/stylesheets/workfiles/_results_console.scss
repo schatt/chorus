@@ -6,7 +6,7 @@
         vertical-align: middle;
         padding: 0;
         background: $core-white;
-/*         border-bottom: $border-canon; */
+//         border-bottom: $border-canon; */
 
         h1 {
             @include results-console;
@@ -111,38 +111,23 @@
         border-top: none;
         margin-top: -4px;
 
-/*         text-align: center; */
+//         text-align: center; */
         vertical-align: middle;
 
         .arrow {
             display: inline-block;
 			position: relative;
 			
-			/* adjust position to 1/2 of glyph width */
+			// adjust position to 1/2 of glyph width */
 			left: -4px;
         }
 
         .up {
             @include triangle-glyph(up);
-
-/*             width:0px; */
-/*             height:0px; */
-/*             border-left:5px solid transparent;  /* left arrow slant */ 
-/*             border-right:5px solid transparent; /* right arrow slant */ 
-/*             border-bottom:5px solid $color-text4; /* bottom, add background color here */ 
-/*             font-size:0px; */
-/*             line-height:0px; */
         }
 
         .down {
 			@include triangle-glyph(down);
-/*             width:0px; */
-/*             height:0px; */
-/*             border-left:5px solid transparent; */
-/*             border-right:5px solid transparent; */
-/*             border-top:5px solid $color-text4; */
-/*             font-size:0px; */
-/*             line-height:0px; */
         }
     }
 

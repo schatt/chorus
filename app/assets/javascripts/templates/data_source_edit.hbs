@@ -1,10 +1,9 @@
 <form>
     <div class="girdle">
-        <label class="required">{{t "data_sources.dialog.data_source_name"}}</label>
-        <input type="text" name="name" maxlength="64" value="{{name}}" tabindex="1"/>
-
-        <label>{{t "data_sources.dialog.description"}}</label>
-        <textarea name="description" maxlength="4095" rows="3" >{{description}}</textarea>
+        
+    <div class="data_source_fields">
+        {{generalDataSourceFields this}}
+        
 
         {{#if hdfsDataSource}}
             {{hdfsVersionsSelect false false}}
@@ -13,11 +12,12 @@
         {{#if gpdbPgOrOracle}}
             {{dbDataSourceFields this}}
         {{/if}}
+
         {{#if gpOrPg}}
-            <label>
-                <input type="checkbox" name="ssl" {{#if ssl}}checked{{/if}}/>
-                {{t "data_sources.dialog.use_ssl"}}
-            </label>
+            <div>
+                <input type="checkbox" id="ssl" name="ssl" {{#if ssl}}checked{{/if}}/>
+                <label for="ssl">{{t "data_sources.dialog.use_ssl"}}</label>
+            </div>
         {{/if}}
 
         {{#if hdfsDataSource}}
@@ -30,28 +30,46 @@
 
         {{#if jdbcHiveDataSource}}
             {{hdfsVersionsSelect true true}}
-            <br/>
+            
             {{jdbcDataSourceFields this}}
-            <br/>
+           
             {{jdbcHiveDataSourceFields this}}
-            <br/>
         {{/if}}
 
         {{#if gnipDataSource}}
-            <label class="gnip_host required" name="streamUrl">
-                {{t "data_sources.dialog.gnip_url"}}
-                <span class="fa fa-question-circle help" data-text='{{t "data_sources.dialog.gnip_help_text"}}'></span>
-            </label>
-            <input class="gnip_host" id="gnip_host" type="text" name="streamUrl" value="{{streamUrl}}" maxlength="255"/>
+                <div>
+                    <label class="required gnip_host" name="host" for="streamUrl">
+                        {{t "data_sources.dialog.gnip_url"}}
+                        <span class="fa fa-question-circle help" data-text='{{t "data_sources.dialog.gnip_help_text"}}'></span>
+                    </label>
+                    <input class="gnip_host" type="text" id="streamUrl" name="streamUrl" value="{{streamUrl}}" maxlength="255"/>
+                </div>
 
-            <label class="gnip_username required" name="username">{{t "data_sources.dialog.gnip_username"}}</label>
-            <label class="gnip_password" name="password">{{t "data_sources.dialog.gnip_password"}}</label>
 
-            <input class="gnip_username" type="text" name="username" value="{{username}}" maxlength="255"/>
-            <input class="gnip_password" type="password" name="password" value="" maxlength="255" autocomplete="off"/>
+                <div class="multiple_fields">
+                    <div class="width_half_left">
+                        <label class="gnip_username required" name="username" for="gnip_username">{{t "data_sources.dialog.gnip_username"}}</label>
+                    </div>
+
+                    <div class="width_half_right">
+                        <label class="gnip_password required" name="password" for="gnip_password">{{t "data_sources.dialog.gnip_password"}}</label>
+                    </div>
+                </div>
+
+                <div class="multiple_fields">
+                    <div class="width_half_left">
+                        <input class="gnip_username" type="text" id="gnip_username" name="username" maxlength="255" value="{{username}}"/>
+                    </div>
+
+                    <div class="width_half_right">
+                        <input class="gnip_password" type="password" id="gnip_password" name="password" maxlength="255" autocomplete="off" value=""/>
+                    </div>
+                </div>
         {{/if}}
-
+    </div>
+    
         {{> legendRequired}}
+        
     </div>
     <!-- END girdle -->
         

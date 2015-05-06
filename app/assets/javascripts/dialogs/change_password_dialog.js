@@ -7,7 +7,7 @@ chorus.dialogs.ChangePassword = chorus.dialogs.Base.extend({
     events: {
         "submit form":"save"
     },
-    persistent:true,
+    persistent: true,
 
     setup: function() {
         this.listenTo(this.model, "saved", this.saved);
@@ -16,7 +16,6 @@ chorus.dialogs.ChangePassword = chorus.dialogs.Base.extend({
     changeSelfPassword: function () {
         var sessionUserID = chorus.session.user().get("id");
         var passwordUserID = this.model.get("id");
-        //this.model.isChangingSelf = (sessionUserID == passwordUserID) ? true : false;
         return (sessionUserID === passwordUserID) ? true : false;
     },
 

@@ -3,20 +3,69 @@
     <label for="use_high_availability">{{t "data_sources.dialog.use_high_availability"}}</label>
 </div>
 
-<label name="host" class="required">{{t "data_sources.dialog.hadoop_host"}}</label>
-<label name="port" class="port required">{{t "data_sources.dialog.port"}}</label>
-<input type="text" name="host" value="{{host}}"/>
-<input type="text" class="port" name="port" value="{{port}}"/>
+<!-- ********** -->
+<div class="multiple_fields">
+    <div class="width_wide">
+        <label name="host" class="required" for="hdfs_host">{{t "data_sources.dialog.hadoop_host"}}</label>
+    </div>
 
-<label name="jobTrackerHost">{{t "data_sources.dialog.hadoop_job_tracker_host"}}</label>
-<label name="jobTrackerPort" class="port">{{t "data_sources.dialog.port"}}</label>
-<input type="text" name="jobTrackerHost" value="{{jobTrackerHost}}"/>
-<input type="text" class="port" name="jobTrackerPort" value="{{jobTrackerPort}}"/>
+    <div class="width_small">
+        <label name="port" class="port required" for="hdfs_port">{{t "data_sources.dialog.port"}}</label>
+    </div>
+</div>
 
-<label class="username required" name="username">{{t "data_sources.dialog.hadoop_account"}}</label>
-<label class="group_list required" name="groupList">{{t "data_sources.dialog.hadoop_group_list"}}</label>
-<input class="username" type="text" name="username"   value="{{username}}" maxlength="255"/>
-<input class="group_list" type="text" name="groupList" value="{{groupList}}" maxlength="255"/>
+<div class="multiple_fields">
+    <div class="width_wide">
+        <input type="text" id="hdfs_host" name="host" value="{{host}}"/>
+    </div>
+
+    <div class="width_small">
+        <input type="text" class="port" id="hdfs_port" name="port" value="{{port}}"/>
+    </div>
+</div>
+
+<!-- ********** -->
+<div class="multiple_fields">
+    <div class="width_wide">
+        <label name="jobTrackerHost" for="jobTrackerHost">{{t "data_sources.dialog.hadoop_job_tracker_host"}}</label>
+    </div>
+
+    <div class="width_small">
+        <label name="jobTrackerPort" for="jobTrackerPort" class="port">{{t "data_sources.dialog.port"}}</label>
+    </div>
+</div>
+
+<div class="multiple_fields">
+    <div class="width_wide">
+        <input type="text" id="jobTrackerHost" name="jobTrackerHost" value="{{jobTrackerHost}}"/>
+    </div>
+
+    <div class="width_small">
+       <input type="text" class="port" id="jobTrackerPort" name="jobTrackerPort" value="{{jobTrackerPort}}"/>
+    </div>
+</div>
+
+<!-- ********** -->
+<div class="multiple_fields">
+    <div class="width_half_left">
+        <label class="username required" name="username">{{t "data_sources.dialog.hadoop_account"}}</label>
+    </div>
+
+    <div class="width_half_right">
+        <label class="group_list required" name="groupList">{{t "data_sources.dialog.hadoop_group_list"}}</label>
+    </div>
+</div>
+
+<div class="multiple_fields">
+    <div class="width_half_left">
+        <input class="username" type="text" name="username" value="{{username}}" maxlength="255"/>
+    </div>
+
+    <div class="width_half_right">
+        <input class="group_list" type="text" name="groupList" value="{{groupList}}" maxlength="255"/>
+    </div>
+</div>
+
 
 <div class="connection_parameters_container">
     <a class="connection_parameters">{{t "data_sources.dialog.connection_parameters" parameterCount}}</a>

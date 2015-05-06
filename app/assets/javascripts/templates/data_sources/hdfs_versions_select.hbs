@@ -1,9 +1,15 @@
-<label class="required">{{t "data_sources.dialog.hdfs_version"}}</label><br/>
-<select class="hdfs_version" name="hdfsVersion">
-    {{#if selectOne}}
-    <option selected name="select_one" value="">{{t "selectbox.select_one"}}</option>
-    {{/if}}
-    {{#each hdfsVersions}}
-        <option value="{{this}}">{{this}}</option>
-    {{/each}}
-</select><br/>
+<div>
+    <div>
+        <label class="required" for="hdfsVersion">{{t "data_sources.dialog.hdfs_version"}}</label>
+    </div>
+    <div>
+        <select class="hdfs_version" id="hdfsVersion" name="hdfsVersion">
+            {{#if selectOne}}
+            <option selected name="select_one" value="">{{t "selectbox.select_one"}}</option>
+            {{/if}}
+            {{#each hdfsVersions}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 chorus.Modal = chorus.views.Base.extend({
     constructorName: "Modal",
-    focusSelector: 'input:eq(0)',
+    focusSelector: "input:eq(0)",
     verticalPosition: 40, // distance of dialog from top of window
 
     launchModal: function() {
@@ -29,30 +29,80 @@ chorus.Modal = chorus.views.Base.extend({
     },
 
     resize: function(windowWidth, windowHeight) {
-        var $popup = $("#facebox .popup");
+
+/* jshint ignore:start */
+
+console.log ("modals.js RESIZE******");
+
+
+// BEGIN: move .errors inside of .girdle
+// TODO: fix when dialogs are redone.
+
+//     var errorBlob = $(".errors");
+    $(".girdle").prepend($(".errors"));
+
+// END: move the .errors
+
+
         var $facebox = $('#facebox');
+        var $popup = $("#facebox .popup");
+
         var $window = $(window);
 
+        var verticalPositionValue = this.verticalPosition;
+//         if (typeof verticalPositionValue === "undefined") {
+//             // console.log ("undefined");
+//             verticalPositionValue = $facebox.offset().top;
+//         };
+
+
+console.log ("modals.js > resize: windowHeight A:" + windowHeight);
         if (!windowHeight) windowHeight = $window.height();
-        
+console.log ("modals.js > resize: windowHeight B:" + windowHeight);
+console.log ("modals.js > resize: this.verticalPosition 1:" + this.verticalPosition);
+console.log ("modals.js > resize: this.verticalPosition 2:" + verticalPositionValue);
+       
         //position the dialog vertically in the window
-        $facebox.css('top', this.verticalPosition + 'px');
+        // $facebox.css('top', this.verticalPosition + 'px');
+        $facebox.css('top', verticalPositionValue + 'px');
+// console.log ("modals.js > resize: top of facebox:" + $facebox.offset().top);
+
         //calculate max height based on current window
-        var popupHeight = windowHeight - this.verticalPosition*2;
+        // var popupHeight = windowHeight - this.verticalPosition * 2;
+        var popupHeight = windowHeight - verticalPositionValue * 2;
         $popup.css("max-height", popupHeight + "px");
+console.log ("modals.js > resize: popupHeight:" + popupHeight);
         
         //calculate max height for interior content
+        // 1st: find height of the dialog header and footer...
         var headerHeight = $("#dialog_header").height();
         var bottomHeight = $("#dialog_bottom").height();
-        // now figure out any height inside the girdle
+
+        // ...if errors are outside of .girdle, then chek if .errors has any height
+        // if YES, then that height will need to be added to the overall available height
+        var errorHeight = $(".dialog .errors").height();
+        errorHeight = isNaN (errorHeight) ? errorHeight : 0;
+
+        // 2nd: figure out height inside .girdle
+        // and account for the visual padding
         var girdleHeight = $(".girdle").height();
         var girdleVerticalPadding = $(".girdle").innerHeight() - girdleHeight;
+        
+// console.log ("modals// .js > resize: girdleVerticalPadding:" + girdleVerticalPadding);
+        
+        // 3rd: max height will be (total height of popup) - (the sum of the other heights) 
+        var maxInteriorHeight = popupHeight - (headerHeight + bottomHeight + errorHeight + girdleVerticalPadding);
+// console.log ("modals.js > resize: maxInteriorHeight A:" + maxInteriorHeight);
 
-        var maxInteriorHeight = popupHeight - (headerHeight + bottomHeight);
-        maxInteriorHeight = maxInteriorHeight- girdleVerticalPadding;
+       //  maxInteriorHeight = maxInteriorHeight- girdleVerticalPadding;
+// console.log ("modals.js > resize: maxInteriorHeight B:" + maxInteriorHeight);
         
         var $dialogInteriorContent = $("#dialog_content .girdle");
         $dialogInteriorContent.css("max-height", maxInteriorHeight + "px");
+        
+//         console.log ("modals.js > resize: max-height:" + maxInteriorHeight);
+//         console.log ("modals.js > resize: error-height:" + errorHeight);
+/* jshint ignore:end */
     },
 
     preRender: function() {

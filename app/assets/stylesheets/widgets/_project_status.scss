@@ -6,7 +6,9 @@
         font-weight: $semibold;
     }
 
-    .label { font-weight: $semibold; }
+    .label {
+        font-weight: $semibold;
+    }
 
     .facts > a {
         text-overflow: ellipsis;
@@ -17,11 +19,11 @@
         vertical-align: bottom;
     }
 
-  i {
-        position: relative;
-        left: 4px;
-        bottom: 1px;
-    }
+//   i {
+//         position: relative;
+//         left: 4px;
+//         bottom: 1px;
+//     }
 
     .progress_container {
         display: inline-block;

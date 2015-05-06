@@ -441,4 +441,10 @@ describe("chorus.dialogs.DataSourceEdit", function() {
             itRecoversFromError();
         });
     });
+    
+    afterEach(function() {
+        this.dataSource= "";
+        this.dialog.teardown();
+    });
+    
 });

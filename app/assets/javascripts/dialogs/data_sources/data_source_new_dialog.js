@@ -34,15 +34,15 @@ chorus.dialogs.DataSourcesNew = chorus.dialogs.Base.extend ({
     additionalContext: function() {
         var config = chorus.models.Config.instance();
         return {
-            gnipConfigured:  config.get('gnipConfigured'),
-            oracleConfigured:  config.get('oracleConfigured'),
+            gnipConfigured: config.get('gnipConfigured'),
+            oracleConfigured: config.get('oracleConfigured'),
             defaultGpdbFields: {dbName: "postgres"},
             parameterCount: {count: this.model.numberOfConnectionParameters()}
         };
     },
 
     showFieldset: function (e) {
-        this.$(".data_sources_form").addClass("collapsed");
+        this.$(".data_source_fields").addClass("collapsed");
         var className = this.$("select.data_sources option:selected").attr("name");
 
         if(className.length) {
