@@ -1,7 +1,7 @@
-$hostname-width : 375px;
-$account_width : 240px;
-$input-spacing : 12px;
-$fieldset-width : $default-dialog-width - 2 * $dialog-padding-leftRight;
+// $hostname-width: 375px;
+// $account_width: 240px;
+// $input-spacing: 12px;
+// $fieldset-width: $default-dialog-width - 2 * $dialog-padding-leftRight;
 
 .data_source_edit {
     input[type=text][disabled=disabled] {
@@ -9,13 +9,13 @@ $fieldset-width : $default-dialog-width - 2 * $dialog-padding-leftRight;
         background: none;
     }
 
-    label {
-        margin-top: $padding-y;
-    }
-
     label, input {
       display: inline-block;
     }
+
+//     label {
+//         margin-top: $padding-y;
+//     }
 
 //     label[name=host], input[name=host],
 //     label[name=jobTrackerHost], input[name=jobTrackerHost],

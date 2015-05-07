@@ -22,7 +22,7 @@
     height: 100%;
 }
 
-/* comfortable spacing at bottom of page EXCEPT for iframe situation */
+// comfortable spacing at bottom of page EXCEPT for iframe situation */
 #page > div[data-template="logged_in_layout"] {
     margin-bottom: $page-margin-bottom;
 }
@@ -43,7 +43,7 @@
     margin-right: $sidebar-width + ($sidebar-padding-x);
 }
 
-/* hax for position fixed header and sidebar */
+// hax for position fixed header and sidebar */
 .logged_in_layout {
     > .header, .page_sub_header, .sub_nav {
         position: fixed;
@@ -76,10 +76,9 @@
 
         .jump_to_top {
             div.triangle_up {
-/*                 @include triangle(up, black, 10px, 6px); */
                 @include triangle-glyph(up);
                 color: #000000;
-/*                 font-size: 0px; */
+//                 font-size: 0px; */
                 margin: 3px auto 0;
             }
 

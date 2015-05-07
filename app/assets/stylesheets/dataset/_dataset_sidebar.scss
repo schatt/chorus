@@ -44,7 +44,7 @@
             display: inline-block;
             font-size: 16px;
             font-weight: $semibold;
-            overflow: hidden; /*this is neccesary for alignment in firefox due to the overflow:hidden firefox bug*/
+            overflow: hidden; // this is neccesary for alignment in firefox due to the overflow:hidden firefox bug*/
             line-height: 22px;
             color: #5f5f5f;
         }
@@ -53,17 +53,19 @@
             margin-top: 15px;
         }
 
-        .table_name, .column_name {
+        .table_name,
+        .column_name {
             display: inline-block;
             @include ellipsis;
             max-width: 185px;
-            color: #000000;
+            color: $black;
             font-size: 16px;
-            line-height:22px;
+            line-height: 22px;
             font-weight: $semibold;
         }
 
-        .statistics, .column_statistics {
+        .statistics,
+        .column_statistics {
             margin-top: 15px;
             margin-left: 15px;
         }

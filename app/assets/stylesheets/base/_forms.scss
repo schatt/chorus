@@ -1,4 +1,4 @@
-/* general rules for forms in the application */
+// GENERAL RULES FOR FORMS IN THE APPLICATION */
 
 
 @import "_common";
@@ -6,17 +6,15 @@
 @import "_button_common";
 
 
-
-/* widget displaying "* = required" */
+// widget displaying "* = required" */
 .legend_for_required {
     position: relative;
     top: 10px;
-    /* margin-top: 15px; */
     font-size: $small-font;
     color: #707070;
 }
 
-/* grouping of options in form */
+// grouping of multiple fields in form */
 fieldset {
     margin: 0 0 0 0;
     padding: 5px 10px 5px 10px;
@@ -34,14 +32,13 @@ fieldset {
     vertical-align: middle;
 }
 
-
 .row {
     &:first-child {
         margin-top: -5px;
     }
 }
 
-/* section of buttons at bottom of form */
+// section of buttons at bottom of form */
 
 // TODO needs to distinguish FORM PAGE from FORM DIALOG
 .form_controls {
@@ -64,15 +61,21 @@ fieldset {
 
 .girdle {
     label {
-        margin-top: 8px;
+        margin-top: $padding-y;
         margin-bottom: 1px;
     }
 }
 
+// grouping of single label & field */
 .form_pair {
 
-    /* default for all form labels = label on line above form element */
+        // default for all form labels = label over form element (over/under) */
     label {
         display: block;
+        
+        // add class .adjacent for when lable & field should be on the same line
+        &.adjacent {
+            display: inline-block;
+        }
     }
 }

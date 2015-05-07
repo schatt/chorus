@@ -30,13 +30,12 @@ chorus.Modal = chorus.views.Base.extend({
 
     resize: function(windowWidth, windowHeight) {
 
-/* jshint ignore:start */
-
-// console.log ("modals.js RESIZE******");
+    /* jshint ignore:start */
+//     console.log ("modals.js RESIZE****** wd:" + windowWidth + " | ht:" + windowHeight);
 
 
 // BEGIN: move .errors inside of .girdle
-// TODO: fix when dialogs are redone.
+// TODO: fix when dialogs are redone
 
     $(".girdle").prepend($(".errors"));
 
@@ -49,28 +48,35 @@ chorus.Modal = chorus.views.Base.extend({
         var $window = $(window);
 
         var verticalPositionValue = this.verticalPosition;
-//         if (typeof verticalPositionValue === "undefined") {
-//             // console.log ("undefined");
-//             verticalPositionValue = $facebox.offset().top;
-//         };
+//          if (typeof verticalPositionValue === "undefined") {
+//              console.log ("verticalPositionValue undefined");
+//              verticalPositionValue = $(window).verticalPositionValue;
+//              console.log ("1 verticalPositionValue " + verticalPositionValue);
+//              verticalPositionValue = $(document).verticalPositionValue;
+//              console.log ("2 verticalPositionValue " + verticalPositionValue);
+//         }
 
 
-// console.log ("modals.js > resize: windowHeight A:" + windowHeight);
+//     console.log ("modals.js > resize: windowHeight A:" + windowHeight);
         if (!windowHeight) windowHeight = $window.height();
-// console.log ("modals.js > resize: windowHeight B:" + windowHeight);
-// console.log ("modals.js > resize: this.verticalPosition 1:" + this.verticalPosition);
-// console.log ("modals.js > resize: this.verticalPosition 2:" + verticalPositionValue);
+//     console.log ("modals.js > resize: windowHeight B:" + windowHeight);
+//     console.log ("modals.js > resize: this.verticalPosition 1:" + this.verticalPosition);
+//     console.log ("modals.js > resize: this.verticalPosition 2:" + verticalPositionValue);
+
        
         //position the dialog vertically in the window
         // $facebox.css('top', this.verticalPosition + 'px');
         $facebox.css('top', verticalPositionValue + 'px');
+
 // console.log ("modals.js > resize: top of facebox:" + $facebox.offset().top);
+
 
         //calculate max height based on current window
         // var popupHeight = windowHeight - this.verticalPosition * 2;
         var popupHeight = windowHeight - verticalPositionValue * 2;
         $popup.css("max-height", popupHeight + "px");
 // console.log ("modals.js > resize: popupHeight:" + popupHeight);
+
         
         //calculate max height for interior content
         // 1st: find height of the dialog header and footer...
@@ -87,6 +93,7 @@ chorus.Modal = chorus.views.Base.extend({
         var girdleHeight = $(".girdle").height();
         var girdleVerticalPadding = $(".girdle").innerHeight() - girdleHeight;
         
+
 // console.log ("modals// .js > resize: girdleVerticalPadding:" + girdleVerticalPadding);
         
         // 3rd: max height will be (total height of popup) - (the sum of the other heights) 
@@ -101,6 +108,7 @@ chorus.Modal = chorus.views.Base.extend({
         
 //         console.log ("modals.js > resize: max-height:" + maxInteriorHeight);
 //         console.log ("modals.js > resize: error-height:" + errorHeight);
+
 /* jshint ignore:end */
     },
 

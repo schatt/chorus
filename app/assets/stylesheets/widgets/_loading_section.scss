@@ -9,9 +9,10 @@
     padding: $activity-gutter 0;
 }
 
-.dashboard_workspace_list .loading_section {
-    padding-top: $activity-gutter;
-}
+// @V5: no longer in use
+// .dashboard_workspace_list .loading_section {
+//     padding-top: $activity-gutter;
+// }
 
 .loading_spinner {
     position: absolute;

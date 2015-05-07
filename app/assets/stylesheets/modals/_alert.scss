@@ -5,14 +5,48 @@ $alert-marker-width: 60px;
 // general alert dialog styles */
 
 .alert {
+
+    width: $default-dialog-width;
+    
     .errors {
-//         width: 483px;
-//         max-width: 483px;
+        padding-bottom: $dialog-padding;
     }
+    
+    // elaborate hacky trapping for when .errors is outside of girdle
+    > .errors {
+        padding-top: 10px;  //$dialog-girdle-padding-top: 10px;
+        padding-bottom: 0;
+        padding-left: $dialog-padding-leftRight;
+        padding-right: $dialog-padding-leftRight;
+ 
+//         ul {
+//             li {
+//                 &:first-child {
+//                     margin-top: 0px;
+//                 }
+//             }
+//         }
+    }
+
+// OVERRIDES for when errors are within aalert dialog
+
+    .errors,
+    .sql_errors,
+    .dataset_errors,
+    .warning {
+        ul {
+            li {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+
+
+
 
     .guts {
         width: $default-dialog-width;
-        // max-width: 500px;
         background-color: $body-background-color;
 
         .content {
@@ -24,8 +58,8 @@ $alert-marker-width: 60px;
                 @include after-clearfix;
 
                 h1 {
-                    color: black;
-                    // font-size: $medium-font;
+                    color: $black;
+                    font-size: 22px;
                     font-weight: $semibold;
                     margin-bottom: 10px;
                 }
@@ -61,7 +95,7 @@ $alert-marker-width: 60px;
             border: 1px solid $border-color;
             font-size: $small-font;
             font-weight: normal;
-            color: black;
+            color: $black;
         }
     }
 
@@ -82,7 +116,7 @@ $alert-marker-width: 60px;
             display: none;
         }
         img.info {
-            display:none;
+            display: none;
         }
         img.error {
             display: inline !important;

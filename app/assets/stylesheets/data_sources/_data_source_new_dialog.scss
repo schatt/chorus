@@ -1,17 +1,17 @@
 .dialog.data_source_new {
 
     .data_sources {
-      min-width: 300px;
-      display: inline-block;
+        min-width: 300px;
+        display: inline-block;
     }
 
     label, input {
-      display: inline-block;
+        display: inline-block;
     }
 
-    label {
-      margin-top: $padding-y;
-    }
+//     label {
+//       margin-top: $padding-y;
+//     }
 
     div.data_source_fields.collapsed {
         display: none;
@@ -122,11 +122,11 @@
 
         margin-bottom: $dialog-padding-bottom;
 
-
         // textarea {}
         
         input {
             box-sizing: border-box;
+
         }
         
         div {
@@ -134,7 +134,6 @@
                 margin-bottom: 20px;
             }
         }
-
 
         .width_wide {
             float: left;
@@ -146,6 +145,7 @@
                 width:17%;
             }
         }
+
         .width_half_left {
             float: left;
             width: 49%;

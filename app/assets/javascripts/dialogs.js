@@ -8,6 +8,7 @@ chorus.dialogs.Base = chorus.Modal.extend ({
 
         this.preRender();
 
+// TODO replace with an actual template, instead of 'generated' stuff
         var header = $("<div id='dialog_header' class='dialog_header'/></div>");
         var errors = $("<div id='dialog_errors' class='errors hidden'/></div>");
         var content = $("<div id='dialog_content' class='dialog_content'/></div>");
@@ -39,7 +40,7 @@ chorus.dialogs.Base = chorus.Modal.extend ({
 //             addClass(this.className).
 //             addClass("dialog").
 //             addClass(this.additionalClass || "");
-// TODO intending to move the errors into the girdle node.
+// TODO intending to move the errors into the girdle node
 
 
         this.delegateEvents();
