@@ -12,7 +12,7 @@ chorus.dialogs.PickJobRecipients = chorus.dialogs.Base.extend({
         this._super("makeModel", arguments);
 
         this.available = this.model.workspace().members();
-        this.available.fetch();
+        this.available.fetchAllIfNotLoaded({per_page: 1e4});
 
         this.chosenIDs = this.model.get(this.options.condition + 'Recipients');
         this.chosen = new chorus.collections.UserSet([]);
