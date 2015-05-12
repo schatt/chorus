@@ -10,8 +10,10 @@ end
 module Clockwork
   configure do |config|
     logger = Logger.new(STDOUT)
-    logger.formatter = Logger::Formatter.new
-    logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+    logger.formatter = proc do |severity, datetime, progname, msg|
+      datetime_format = datetime.strftime "%Y-%m-%d %H:%M:%S"
+      "[#{datetime_format}] #{msg}\n"
+    end
     config[:logger] = logger
   end
 end

@@ -149,7 +149,4 @@ describe QC do
     QC.log(:message => "Rome is burning")
   end
 
-  it "adds timestamps to clockwork logs" do
-    Clockwork.config[:logger].instance_variable_get(:@formatter).instance_variable_get(:@datetime_format).should eq("%Y-%m-%d %H:%M:%S")
-  end
 end
