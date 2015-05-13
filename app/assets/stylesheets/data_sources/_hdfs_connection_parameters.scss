@@ -1,16 +1,21 @@
 .hdfs_connection_parameters {
 
-  .headerbar {
-    height: 30px;
+    .headerbar {
+        height: 30px;
 
-    .right {
-      float: right;
-      font-weight: $semibold;
+        .right {
+            float: right;
+            font-weight: $semibold;
+        }
     }
-  }
 
-  .pairs {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
+    .row:first-child {
+        margin-top: 0px;
+    }
+
+    .pairs {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
 }
