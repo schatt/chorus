@@ -137,7 +137,7 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
         // Sort the workspaces such that the most active appears on the top
         var processed_data = event_counts_by_workspace_id.entries(data)
             .sort(function(a,b) {
-                return (a.values[0].rank > b.values[0].rank)? 1 : (a.rank === b.rank)? 0 : -1;
+                return (a.values[0].rank > b.values[0].rank)? 1 : (a.values[0].rank === b.values[0].rank)? 0 : -1;
             });
 
         // Entities in the visualization:
