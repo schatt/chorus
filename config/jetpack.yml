@@ -1,6 +1,6 @@
 jruby: http://jruby.org.s3.amazonaws.com/downloads/1.7.13/jruby-complete-1.7.13.jar
 jetty: http://repo.alpinenow.local/artifactory/alpine-release/jetty-hightide-8.1.9.v20130131.zip
-jruby-rack: http://repository.codehaus.org/org/jruby/rack/jruby-rack/1.1.14/jruby-rack-1.1.14.jar
+jruby-rack: http://repo.alpinenow.local/artifactory/alpine-release/jruby-rack/1.1.14/jruby-rack-1.1.14.jar
 app_root: $CHORUS_HOME
 java_options: $CHORUS_JAVA_OPTIONS
 ruby_version: 1.9
