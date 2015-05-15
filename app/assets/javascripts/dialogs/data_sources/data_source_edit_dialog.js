@@ -99,6 +99,8 @@ chorus.dialogs.DataSourceEdit = chorus.dialogs.Base.extend({
 
         if(this.model.get('hive')) {
             attrs.hiveKerberos = this.model.get('hiveKerberos');
+            attrs.hiveHadoopVersion = attrs.hdfsVersion;
+            delete attrs.hdfsVersion;
         }
 
         attrs.highAvailability = !!this.$("input[name=high_availability]").prop("checked");
