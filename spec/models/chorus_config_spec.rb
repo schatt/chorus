@@ -382,6 +382,7 @@ describe ChorusConfig do
             'Cloudera CDH5',
             'Cloudera CDH5.3',
             'Hortonworks HDP 2',
+            'Hortonworks HDP 2.2',
             'MapR',
             'MapR4',
             'Pivotal HD 2',
