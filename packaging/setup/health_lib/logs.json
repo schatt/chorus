@@ -1,0 +1,110 @@
+{"Name": "chorus jetty.log", "Path": "$CHORUS_HOME/shared/log/jetty.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe",
+	"(?i)exception",
+	"(?i)heap space",
+	"(?i)memory"
+] }
+{"Name": "production", "Path": "$CHORUS_HOME/shared/log/production.log", "Exps": [
+	" 404",
+	" 400",
+	" 401",
+	" 403",
+	" 500",
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe",
+	"(?i)java"
+] }
+{"Name": "scheduler", "Path": "$CHORUS_HOME/shared/log/scheduler.production.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe"
+] }
+{"Name": "solr", "Path": "$CHORUS_HOME/shared/log/solr-production.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe"
+] }
+{"Name": "worker", "Path": "$CHORUS_HOME/shared/log/worker.production.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe",
+	"(?i)exception"
+] }
+{"Name": "nginx/access", "Path": "$CHORUS_HOME/shared/log/nginx/access.log", "Exps": [
+	" 404",
+	" 400",
+	" 401",
+	" 500",
+	" 403"
+] }
+{"Name": "nginx/error", "Path": "$CHORUS_HOME/shared/log/nginx/error.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe",
+	"(?i)exception",
+	" 404",
+	" 400",
+	" 401",
+	" 500",
+	" 403"
+] }
+{"Name": "alpine", "Path": "$HOME/Alpine.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "agent pdh2", "Path": "$HOME/AlpineAgent_1.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "agent cdh4", "Path": "$HOME/AlpineAgent_2.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "agent mapr3", "Path": "$HOME/AlpineAgent_3.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "agent cdh5", "Path": "$HOME/AlpineAgent_4.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "agent hw2", "Path": "$HOME/AlpineAgent_5.log", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "alpine tomcat/catalina", "Path": "$CHORUS_HOME/alpine-current/apache-tomcat-7.0.41/logs/catalina.out", "Exps": [
+	"(?i)exception",
+	"(?i)error",
+	"(?i)heap space",
+	"(?i)memory",
+	"(?i)license"
+] }
+{"Name": "jetty request", "Path": "$CHORUS_HOME/shared/log/jetty_request_$ALPINEDATE.log", "Exps": [
+	"(?i)warning",
+	"(?i)error",
+	"(?i)severe",
+	"(?i)exception",
+	"(?i)heap space",
+	"(?i)memory"
+] }

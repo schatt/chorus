@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+import os
+import re
+from setup import configParser
+
+ConfigParser = configParser.ConfigParser
+if os.path.lexists(os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.properties")):
+    CHORUS_CONFIG = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.properties")
+else:
+    CHORUS_CONFIG = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.defaults.properties")
+chorus_config = ConfigParser(CHORUS_CONFIG)
+#print chorus_config
+print "export CHORUS_NEWRELIC_ENABLED=\"%s\"" % chorus_config["newrelic.enabled"]
+print "export CHORUS_NEWRELIC_LICENSE_KEY=\"%s\"" % chorus_config["newrelic.license_key"]
+print "POSTGRES_PORT=\"%s\"" % chorus_config["postgres_port"]
+print "SOLR_PORT=\"%s\"" % chorus_config["solr_port"]
+print "CHORUS_JAVA_OPTIONS=\"%s\"" % chorus_config["java_options"]
+java_option_without_xms = re.sub(r"-Xms\S+", "", chorus_config["java_options"])
+print "CHORUS_JAVA_OPTIONS_WITHOUT_XMS=\"%s\"" % java_option_without_xms
+jruby_opts = []
+for option in java_option_without_xms.split(" "):
+    if option.strip() == "":
+        continue
+    if option in ["-server","-client"]:
+        option = "-" + option
+    else:
+        option = "-J" + option
+    jruby_opts.append(option)
+if os.getenv("RAILS_ENV") == "production":
+    jruby_opts.append("-J-Dapple.awt.UIElement=true")
+
+print "JRUBY_OPTS=\"%s\"" % " ".join(jruby_opts)
+
