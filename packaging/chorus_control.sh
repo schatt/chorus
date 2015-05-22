@@ -28,7 +28,25 @@ function should_handle () {
   # If no services are provided, or $1 is a service to start
   [ ${#services[@]} -eq 0 ] || contains ${services[@]} $1
 }
+function setup () {
+  EXIT_STATUS=0
+  pushd $CHORUS_HOME > /dev/null
+  chorus_server setup "$@"
+  EXIT_STATUS=`expr $EXIT_STATUS + $?`
+}
+function health_check () {
+  EXIT_STATUS=0
+  pushd $CHORUS_HOME > /dev/null
+  chorus_server health_check "$@"
+  EXIT_STATUS=`expr $EXIT_STATUS + $?`
 
+}
+function configure () {
+  EXIT_STATUS=0
+  pushd $CHORUS_HOME > /dev/null
+  chorus_server configure "$@"
+  EXIT_STATUS=`expr $EXIT_STATUS + $?`
+}
 function start () {
   EXIT_STATUS=0
   pushd $CHORUS_HOME > /dev/null
@@ -234,6 +252,9 @@ function usage () {
   echo "  $script monitor [services]                       monitor and restart services as needed"
   echo "  $script backup  [-d dir] [-r days]               backup Chorus data"
   echo "  $script restore [file]                           restore Chorus data"
+  echo "  $script setup                                    setup chorus and alpine"
+  echo "  $script health_check                             health check chorus service"
+  echo "  $script configure                                configure chorus and alpine"
   echo
   if [ "$ALPINE_HOME" != "" ]; then
     echo "The following services are available: postgres, workers, scheduler, solr, webserver, alpine."
@@ -284,6 +305,15 @@ case $command in
     restore )
        restore ${@}
        ;;
+	setup )
+	   setup ${@}
+	   ;;
+	health_check )
+	   health_check ${@}
+	   ;;
+	configure )
+	   configure ${@}
+	   ;;
     * )
        usage
        ;;

@@ -1,0 +1,228 @@
+    ALPINE ANALYTICS, INC. ALPINE END USER SOFTWARE LICENSE AGREEMENT
+
+IMPORTANT NOTICE: YOU SHOULD READ THE FOLLOWING TERMS CAREFULLY BEFORE YOU
+INSTALL OR USE ANY SOFTWARE AND DOCUMENTATION FROM ALPINE ANALYTICS, INC.
+("Alpine") IF YOU INSTALL OR USE THE SOFTWARE ("SOFTWARE"), YOU SHALL HAVE
+ACCEPTED THESE TERMS.  IF YOU HAVE PURCHASED THIS SOFTWARE LICENSE VIA THE
+INTERNET BY CLICKING THE ACCEPT BUTTON, YOU CONSENT TO BE BOUND BY AND BECOME A
+PARTY TO THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS
+AGREEMENT, CLICK THE BUTTON THAT INDICATES THAT YOU DO NOT ACCEPT THE TERMS OF
+THIS AGREEMENT AND DO NOT INSTALL THE SOFTWARE.  YOU MAY RETURN THIS SOFTWARE
+FOR A FULL REFUND. YOUR RIGHT TO RETURN AND REFUND EXPIRES THIRTY (30) DAYS
+AFTER PURCHASE FROM ALPINE.
+
+IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THE AGREEMENT, THEN ALPINE IS
+UNWILLING TO LICENSE THE SOFTWARE TO YOU.
+
+License. The Software is licensed, not sold, to You for use only under the terms
+of this License ("License").  Subject to the terms set forth in this License
+Agreement ("Agreement"), Alpine, grants You this non-exclusive, non-transferable
+License to use the Software in machine-readable form and any documentation
+delivered with the Software (the "Documentation").  Documentation
+means written information (whether contained in user or technical manuals,
+training materials, specifications or otherwise) pertaining to the Software and
+made available with the Software.  This License solely enables You to install
+one copy of the Software on one computer and to use the Software on that
+computer for which You have paid the applicable License fees solely for Your own
+internal business purposes. The Software is considered to be in use when it
+resides in memory or is otherwise stored on a machine. In order to use the
+Software, You may be required to input a registration number or product
+authorization key and register Your copy of the Software online at Alpine's
+website to obtain the necessary License key or License file.
+
+Ownership and Intellectual Property Rights.  Alpine retains full ownership
+rights in the Software and Documentation and all rights not expressly granted to
+You in this Agreement.  The Software and Documentation are protected by
+copyright and other intellectual property rights.  You may not copy or otherwise
+use the Software or Documentation, in whole or part, except as expressly
+permitted in this Agreement. Your possession, installation, or use of the
+Software does not transfer to You any title to the intellectual property in the
+Software, and will not acquire any rights to the Software except as expressly
+set forth in this Agreement.
+
+Restrictions of Use. The Software and Documentation may be copied solely for the
+purposes of installation and back-up.  You may not sublicense, assign, rent,
+lease, lend, sell, redistribute or transfer the Software, Documentation or any
+rights thereto, either in whole or in part, to any third party.  You will not
+permit the publication or distribution of results of any benchmark tests run on
+the Software without the express written permission of Alpine.  You may not
+modify the Software in any manner.  You agree that the source code applicable to
+the Software is confidential and proprietary to Alpine. Accordingly, You may not
+decompile, disassemble, reverse engineer or otherwise manipulate the Software so
+as to derive such source code, modify, or create derivative works.  If You
+breach this restriction, You may be subject to prosecution and damages. The
+terms of the License will govern any upgrades that replace or supplement the
+original Software, unless such upgrade is accompanied by a separate license in
+which case the terms of that license will govern.
+
+Term and Termination.  The Agreement and the License granted herein shall remain
+effective until terminated. The term of the License provided in this Agreement
+is perpetual and becomes effective on Your installation or use of the Software.
+You may terminate this License at any time by destroying all copies of the
+Software and Documentation or by returning all such copies to Alpine. This
+Agreement and the License for the Software and Documentation will terminate
+automatically and without provision of notice by Alpine if (i) You fail to
+comply with any of the terms of this Agreement, including any attempt to
+transfer any copy of the Software or Documentation to another party or any
+attempt to modify the Software or (ii) You cease doing business, dissolve, make
+an assignment for the benefit of creditors of all or substantially all of Your
+assets or voluntarily or involuntarily enter bankruptcy.  Upon termination for
+any reason, You agree that You will destroy all copies of the Software and
+Documentation full or partial in Your possession or control or return all such
+copies to Alpine. Limitations of liability, limited warranty and disclaimers and
+restrictions of warranty shall survive termination of this Agreement.
+
+Records. You grant to Alpine and its independent accountants the right to
+examine Your books, records and accounts during Your normal business hours to
+verify compliance with this Agreement. In the event such audit discloses non-
+compliance with this Agreement, You shall promptly pay to Alpine the appropriate
+License fees, plus the reasonable cost of conducting the audit.
+
+Limited Warranty. Alpine warrants that for a period of thirty (30) days from the
+date of shipment of the media containing the Software to You, the Software, if
+operated as instructed, will perform substantially in accordance with the
+accompanying Documentation.  Alpine’s obligation under this warranty shall be
+limited as set forth below.  Alpine does not warrant that the Software is
+totally free from error or omission or that its operation will be uninterrupted.
+All warranty obligations are void if the Software has been improperly installed
+or, has been modified by a party other than Alpine.   Your sole and exclusive
+remedy and the entire liability of Alpine under this limited warranty will be
+(i) replacement of defective media and/or (ii) at Alpine's option, repair,
+replacement, or refund of the purchase price of the Software, in both cases
+subject to the condition that any error or defect constituting a breach of this
+limited warranty is reported within the warranty period. Alpine may, at its
+option, require return of the Software and/or Documentation as a condition to
+the remedy.
+
+DISCLAIMER OF WARRANTY. EXCEPT AS SPECIFICALLY STATED ABOVE OR AS REQUIRED BY
+LAW, THE LICENSED SOFTWARE IS PROVIDED WITHOUT WARRANTY OF ANY KIND, EITHER
+EXPRESSED OR IMPLIED INCLUDING, WITHOUT LIMITATION, ANY WARRANTY OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE
+RESULTS OBTAINED AND PERFORMANCE OF THE LICENSED SOFTWARE IS ASSUMED BY YOU, AND
+ALPINE ASSUMES NO RESPONSIBILITY FOR THE ACCURACY OR APPLICATION OF OR ERRORS OR
+OMISSIONS IN THE LICENSED SOFTWARE. EXCEPT AS MAY BE REQUIRED BY LAW, IN NO
+EVENT SHALL ALPINE BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR
+CONSEQUENTIAL DAMAGES ARISING OUT OFTHE USE OR INABILITY TO USE THE LICENSED
+SOFTWARE, EVEN IF ALPINE HAS BEEN ADVISED OF THE LIKELIHOOD OF SUCH DAMAGES
+OCCURRING.  ALPINE SHALL NOT BE LIABLE FOR ANY BUSINESS INTERRUPTION; LOST
+PROFITS OR REVENUE; LOSS OF USE OF THE LICENSED SOFTWARE; LOSS OF DATA OR
+EQUIPMENT; THE COST OF SUBSTITUTE PROCUREMENT; CLAIMS BY THIRD PARTIES OR OTHER
+SIMILAR COSTS EXCEPT AS REQUIRED BY LAW.
+ 
+The warranty and remedy set forth herein are exclusive and in lieu of all
+others, oral or written, expressed or implied. No Alpine agent or employee or
+third party is authorized to make any modification or addition to this warranty.
+
+Limitation of Liability. Alpine’s entire liability and Your sole remedy shall be
+limited, at the election of Alpine, to (i) replacement of the media containing
+the Software, (ii) use of Alpine’s reasonable efforts to correct, at no charge,
+Software errors of which Alpine is the cause, or (iii) if (i) or (ii) are not
+commercially practicable, accept return of the Software and associated
+documentation and refund Your License fee paid for the Software, less a
+reasonable fee for use up to the time of return. Alpine shall have no liability
+if failure of the Software is the result in whole or in part of abuse,
+misapplication, unauthorized modification or accident. Any replacement Software
+will be warranted on the same terms for the remainder of the original warranty
+period or thirty (30) days, whichever is longer.
+
+Infringement Indemnification. Alpine agrees to defend at its own expense any
+action brought against You to the extent that it is based on a claim that any
+Software infringes any United States patent, copyright, or trade mark, and will
+pay any costs and damages finally awarded against You in any such actions which
+are attributable to any such claim.  Alpine’s obligation under the preceding
+sentence is subject to the conditions that (i) You promptly notify Alpine in
+writing of any such claim, (ii) Alpine has sole control of such defense and all
+negotiations for any settlement or compromise, and (iii) should any Software
+become, or in Alpine’s opinion be likely to become, the subject of any such
+claim, You permit Alpine, at Alpine’s option and expense, to procure for You the
+right to continue using such Software, to replace or modify it so that it
+becomes non-infringing, or to grant You a credit for such Software as
+depreciated on a three-year, straight-line basis, and accept its return. Alpine
+has no liability under this section with respect to any claim which is based
+upon or results from (i) the combination of any Software with any equipment,
+device, firmware or software not furnished or approved by Alpine, or (ii) any
+modification of any Software by a party other than Alpine, (iii) the failure of
+others to install or have installed changes, revisions or updates as instructed
+by Alpine if such would have made the Software non-infringing, or (iv) Alpine’s
+compliance with Your specifications, designs or instructions.
+
+THIS PARAGRAPH STATES YOUR SOLE REMEDY AND ALPINE’S ENTIRE LIABILITY FOR ANY
+CLAIM RELATING TO INTELLECTUAL PROPERTY RIGHTS INFRINGEMENT.
+
+Restricted Rights.  The Software is licensed subject to RESTRICTED RIGHTS. Use,
+duplication, or disclosure by the US. Government or any person or entity acting
+on its behalf is subject to restrictions as set forth in subdivision (c)(1) (ii)
+the Rights in Technical Data and Computer Software Clause at DFARS
+(§252.227-7013 and §252.211-7015) for DoD contracts, in paragraphs (c)(1) and
+(2) of the Commercial Computer Software Restricted Rights clause in the FAR
+(§52. 227-19) for civilian agencies or in other comparable agency clauses.
+
+Export and Re-export. You agree that U.S. export control laws and other
+applicable export and import laws govern Your use of the Product, including
+technical data. You may not use or otherwise export or re-export the Software
+except as authorized by United States law. Without limitation, the Software may
+not be exported or re-exported (a) into any U.S. embargoed countries or (b) to
+anyone on the U.S. Treasury Department's list of Specially Designated Nationals
+or the U.S. Department of Commerce Denied Person’s List or Entity List. By using
+the Software, You represent and warrant that You are not located in any such
+country or on any such list. You also agree that You will not use these products
+for any purposes prohibited by United States law, including, without limitation,
+the development, design, manufacture or production of nuclear, missiles, or
+chemical or biological weapons.
+
+Open Source Software Restrictions.  "Open Source" software means
+software available without charge for use, modification or distribution is often
+licensed under terms that require the user to make the user's modifications to
+the Open Source software or any software that the user 'combines' with the Open
+Source software freely available in source code form. If You use Open
+Source software in conjunction with the Product, You must ensure that Your use
+does not: (i) create, or purport to create, obligations with respect to
+the Alpine Product; or (ii) grant, or purport to grant, to any third party any
+rights to or immunities under our intellectual property or proprietary rights in
+the Alpine Product. For example, You may not develop a software Product
+using a Alpine Product and an Open Source Product where such use results in a
+Product file(s) that contains code from both the Alpine Product and the Open
+Source Product (including without limitation libraries) if the Open Source
+Product is Licensed under a License that requires any "modifications"
+be made freely available. You also may not combine the Alpine Product with
+programs Licensed under the GNU General Public License ("GPL") in any
+manner that could cause, or could be interpreted or asserted to cause, the
+Alpine Product or any modifications thereto to become subject to the terms of
+the GPL. This commercial product includes third party software ("Third Party
+Software"). By using the Software, You acknowledge and agree that Alpine is not
+responsible for examining or evaluating the content, accuracy, completeness,
+timeliness, validity, copyright compliance, legality, decency, quality or any
+other aspect of such Third Party Software or web sites. Alpine does not warrant
+or endorse and does not assume and will not have any liability or responsibility
+to You or any other person for any Third Party Software, Third Party Software or
+web sites. Third Party Materials and links to other web sites are provided
+solely as a convenience to You.
+
+Third Party Software. Alpine does not supply all third party software that may
+be required to use the Software. Please consult the Documentation for
+further details. You acknowledge that the Software contains or is provided
+with copyrighted software of Alpine’s suppliers which are obtained under a
+license from such suppliers. Your use of any third party software shall be
+subject to and You agree to and shall comply with the applicable restrictions
+and other terms and conditions set forth therein.
+
+Reporting.  To enable product improvements and bug fixes, the Software will
+record errors and other diagnostic information back to Alpine operated servers.
+Information passed along would be generic and be general application level-data
+and exclude user-specific data.  This is a feature that users may turn off.
+However, the Software will have this feature turned on by default.  By
+installation of this Software, the User agrees with the default settings of
+Alpine’s Software.
+
+General.  If any provision of this Agreement is held to be invalid or
+unenforceable by a court of competent jurisdiction, the remainder of the
+provisions of this Agreement shall remain in full force and effect.  The laws of
+the State of California, excluding its conflicts of law rules, govern this
+License and Your use of the Software. Your use of the Software may also be
+subject to other local, state, national, or international laws.  Alpine retains
+all rights not expressly granted. Nothing in this Agreement constitutes a waiver
+of Alpine’s rights under U.S. copyright laws or any other federal, state, local,
+or foreign law or grants You any rights in source code. You are responsible for
+installation, management and operation of the Software.  Should You have any
+questions concerning this Agreement, contact Alpine, Inc. 1550 Bryant Street,
+Suite 1000, San Francisco, CA 94103 USA.
