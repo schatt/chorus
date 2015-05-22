@@ -89,7 +89,7 @@ def grant_permission(user, chorus_path, data_path):
         raise Exception("[ERROR] " + stderr)
 
 def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
-    @processify(msg=text.get("step_msg", "install_chorus_process") % chorus_path, interval=1.5)
+    @processify(msg=text.get("step_msg", "install_chorus_process") % chorus_path, interval=4)
     def copy():
 
         ret, stdout, stderr = run("cp -rf %s %s" % (os.path.join(installation_path, "version_build"), chorus_path))
@@ -100,8 +100,8 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
         ret, stdout, stderr = run("mkdir -p %s && cp -rf %s %s" % (release_path, installation_path, release_path))
         if ret != 0:
             raise Exception("[ERROR] " + stderr)
+        grant_permission(user, chorus_path, data_path)
     copy()
-    grant_permission(user, chorus_path, data_path)
 
 def install():
     global fresh_install
