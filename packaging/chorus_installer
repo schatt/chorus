@@ -81,12 +81,18 @@ def compare_version(cur, pre):
     else:
         return 1
 
-def grant_permission(user, chorus_path, data_path):
+def grant_permission(user, chorus_path, data_path, release_path):
+    global fresh_install
     logger.debug("change %s's owner to %s:" % (chorus_path, user))
     run("chown %s:%s /tmp/install.log" % (user, user))
-    ret, stdout, stderr = run("chown -R %s:%s %s && chown -R %s:%s %s" % (user, user, chorus_path, user, user, data_path))
-    if ret != 0:
-        raise Exception("[ERROR] " + stderr)
+    if not fresh_install:
+        ret, stdout, stderr = run("chown -R %s:%s %s && chown %s:%s %s" % (user, user, release_path, user, user, os.path.join(chorus_path, "version_build")))
+        if ret != 0:
+            raise Exception("[ERROR] " + stderr)
+    else:
+        ret, stdout, stderr = run("chown -R %s:%s %s && chown -R %s:%s %s" % (user, user, chorus_path, user, user, data_path))
+        if ret != 0:
+            raise Exception("[ERROR] " + stderr)
 
 def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
     @processify(msg=text.get("step_msg", "install_chorus_process") % chorus_path, interval=4)
@@ -100,10 +106,13 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
         ret, stdout, stderr = run("mkdir -p %s && cp -rf %s %s" % (release_path, installation_path, release_path))
         if ret != 0:
             raise Exception("[ERROR] " + stderr)
-        grant_permission(user, chorus_path, data_path)
+        grant_permission(user, chorus_path, data_path, release_path)
     copy()
 
+
 def install():
+    if not os.getuid() == 0:
+        raise Exception("Please run installer as root")
     global fresh_install
     if not prompt_for_eula():
         print text.get("error_msg", "program_abort") % "Install"
@@ -117,26 +126,30 @@ def install():
     data_path = options.data_path
     passphrase = options.passphrase
     install_alpine = not options.chorus_only
-    if os.path.exists(dot_chorus):
+    user = io.prompt(text.get("interview_question", "specify_user"), default=user)
+    ret, stdout, stderr = run("useradd %s" % user)
+    if ret not in [0,9]:
+        if ret == 126:
+            stderr += "Please run as the user with root permission\n"
+        raise Exception(stderr)
+
+    ret, stdout, stderr = run("su - %s -c \'echo $CHORUS_HOME\'" % user)
+    if ret == 0 and stdout.strip("\n") is not "":
         fresh_install = False
-        with open(dot_chorus, "r") as f:
-            lines = f.readlines()
-            user = lines[0].strip("\n")
-            chorus_path = lines[1].strip("\n")
-            data_path = lines[2].strip("\n")
-            passphrase = lines[3].strip("\n")
-            install_alpine = lines[4].strip("\n")
-            if install_alpine.lower() == "true":
-                install_alpine = True
-            else:
-                install_alpine = False
-    if fresh_install or io.require_confirmation(text.get("interview_question", "reconfigure") % (user, chorus_path, data_path, passphrase, str(install_alpine)), "no"):
-        user = io.prompt(text.get("interview_question", "specify_user"), default=user)
-        ret, stdout, stderr = run("useradd %s" % user)
-        if ret not in [0,9]:
-            if ret == 126:
-                stderr += "Please run as the user with root permission\n"
-            raise Exception(stderr)
+        chorus_path = stdout.strip("\n")
+        data_path = os.path.dirname(os.path.realpath(os.path.join(chorus_path, "shared/db")))
+       # with open(dot_chorus, "r") as f:
+       #     lines = f.readlines()
+       #     user = lines[0].strip("\n")
+       #     chorus_path = lines[1].strip("\n")
+       #     data_path = lines[2].strip("\n")
+       #     passphrase = lines[3].strip("\n")
+       #     install_alpine = lines[4].strip("\n")
+       #     if install_alpine.lower() == "true":
+       #         install_alpine = True
+       #     else:
+       #         install_alpine = False
+    if fresh_install: #or io.require_confirmation(text.get("interview_question", "reconfigure") % (user, chorus_path, data_path, passphrase, str(install_alpine)), "no"):
         chorus_path = io.prompt(text.get("interview_question", "specify_chorus_path"), default=chorus_path)
 
         data_path = io.prompt(text.get("interview_question", "specify_data_path"), default=data_path)
@@ -180,12 +193,12 @@ def install():
         output(bold(text.get("step_msg", "upgrade_or_downgrade_chorus") % (msg, version)))
     copy_to_dest(installation_path, chorus_path, data_path, release_path, user)
 
-    with open(dot_chorus, "w") as f:
-        f.write(user + "\n")
-        f.write(chorus_path + "\n")
-        f.write(data_path + "\n")
-        f.write(passphrase + "\n")
-        f.write(str(install_alpine))
+    #with open(dot_chorus, "w") as f:
+    #    f.write(user + "\n")
+    #    f.write(chorus_path + "\n")
+    #    f.write(data_path + "\n")
+    #    f.write(passphrase + "\n")
+    #    f.write(str(install_alpine))
     _s = ""
     if options.silent:
         _s = "-s"
@@ -208,7 +221,7 @@ try:
     signal.signal(signal.SIGINT, exit_gracefully)
     install()
 except Exception as e:
-    if fresh_install and os.path.exists(dot_chorus):
-        os.remove(dot_chorus)
+    #if fresh_install and os.path.exists(dot_chorus):
+    #    os.remove(dot_chorus)
     print "[ERROR]:" + error(str(e) + "\n" + text.get("error_msg", "exception"))
     logger.debug(traceback.format_exc())
