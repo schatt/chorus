@@ -14,7 +14,7 @@ from chorus_executor import ChorusExecutor
 from configure import configure
 from health_check import health_check
 from func_executor import processify
-from helper import get_version
+from helper import get_version, migrate_alpine_conf
 from text import text
 
 
@@ -362,6 +362,12 @@ class ChorusSetup:
             alpine_data_repo = os.path.join(self.options.chorus_path, "shared/ALPINE_DATA_REPOSITORY")
             if os.path.exists(alpine_data_repo):
                 logger.debug("Alpine Data Repository existed, skipped")
+                if not os.path.exists(os.path.join(alpine_data_repo, "configuration/hadoop_version.properties")):
+                    shutil.copyfile(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY/configuration/hadoop_version.properties"),\
+                                    os.path.join(alpine_data_repo, "configuration/hadoop_version.properties"))
+                migrate_alpine_conf(os.path.join(alpine_data_repo, "configuration/alpine.conf"), \
+                                    os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY/configuration/alpine.conf"))
+
             else:
                 shutil.copytree(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY"), alpine_data_repo)
         configure()

@@ -137,7 +137,8 @@ def install():
     if ret == 0 and stdout.strip("\n") is not "":
         fresh_install = False
         chorus_path = stdout.strip("\n")
-        data_path = os.path.dirname(os.path.realpath(os.path.join(chorus_path, "shared/db")))
+        if os.path.lexists(os.path.join(chorus_path, "shared/db")):
+            data_path = os.path.dirname(os.path.realpath(os.path.join(chorus_path, "shared/db")))
        # with open(dot_chorus, "r") as f:
        #     lines = f.readlines()
        #     user = lines[0].strip("\n")
