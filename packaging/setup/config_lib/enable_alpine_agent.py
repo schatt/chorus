@@ -17,7 +17,11 @@ def enable_alpine_agent(options):
         contents = f.read()
 
     agents_str = "\n".join(str(key+1) + ". " + agent_dic[key][1] + " " + agent_dic[key][2] for key in range(0, len(agent_dic)))
-    agents = io.require_selection(text.get("interview_question", "alpine_agent_menu") % agents_str, range(1, len(agent_dic)+1), default=[4])
+    agents_str += "\n%d. exit" % (len(agent_dic) + 1)
+    agents = io.require_selection(text.get("interview_question", "alpine_agent_menu") % agents_str, range(1, len(agent_dic)+2), default=[4])
+
+    if (len(agent_dic) + 1) in agents:
+        return
 
     for i in range(1, len(agent_dic) + 1):
         contents = re.sub("hadoop.version.%s.agents.%s.enabled=[a-z]+" % (agent_dic[i-1][1], agent_dic[i-1][0]),\
