@@ -181,17 +181,17 @@ def install():
         else:
             default = "no"
             msg = text.get("common", "reinstall")
-        if not io.require_confirmation(text.get("interview_question", "pre_version_detect") % (pre_version, msg, cur_version), default):
+        if not io.require_confirmation(text.get("interview_question", "pre_version_detect") % (pre_version, msg.lower(), cur_version), default):
             print
             print text.get("error_msg", "program_abort") % msg
             return
     if not options.disable_spec:
         system_checking(True, chorus_path)
 
-    if msg in ["Installing", "Re-install"]:
-        output(bold(text.get("step_msg", "install_chorus") % (msg, version)))
+    if msg in ["Install", "Re-install"]:
+        output(bold(text.get("step_msg", "install_chorus") % (msg+"ing", version)))
     else:
-        output(bold(text.get("step_msg", "upgrade_or_downgrade_chorus") % (msg, version)))
+        output(bold(text.get("step_msg", "upgrade_or_downgrade_chorus") % (msg.rstrip("e")+"ing", version)))
     copy_to_dest(installation_path, chorus_path, data_path, release_path, user)
 
     #with open(dot_chorus, "w") as f:

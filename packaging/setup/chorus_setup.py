@@ -362,9 +362,9 @@ class ChorusSetup:
             alpine_data_repo = os.path.join(self.options.chorus_path, "shared/ALPINE_DATA_REPOSITORY")
             if os.path.exists(alpine_data_repo):
                 logger.debug("Alpine Data Repository existed, skipped")
-                if not os.path.exists(os.path.join(alpine_data_repo, "configuration/hadoop_version.properties")):
-                    shutil.copyfile(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY/configuration/hadoop_version.properties"),\
-                                    os.path.join(alpine_data_repo, "configuration/hadoop_version.properties"))
+                #if not os.path.exists(os.path.join(alpine_data_repo, "configuration/hadoop_version.properties")):
+                self._cp_f(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY/configuration/hadoop_version.properties"),\
+                           os.path.join(alpine_data_repo, "configuration/hadoop_version.properties"))
                 migrate_alpine_conf(os.path.join(alpine_data_repo, "configuration/alpine.conf"), \
                                     os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY/configuration/alpine.conf"))
 
