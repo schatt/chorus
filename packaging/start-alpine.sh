@@ -17,5 +17,6 @@ else
         log "starting alpine"
         CATALINA_PID=$ALPINE_PID_FILE $ALPINE_HOME/alpine_control.sh start >/dev/null
         wait_for_start $ALPINE_PID_FILE
+		log "alpine started as pid `cat $ALPINE_PID_FILE`"
     fi
 fi
