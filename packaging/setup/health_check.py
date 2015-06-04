@@ -22,11 +22,13 @@ def _load_configure_func():
         idx += 1
     return dic
 
-def system_checking(install_mode=False, chorus_path=None):
+def system_checking(install_mode=False, chorus_path=None, user=None):
     logger.info(bold(text.get("step_msg", "health_check")))
     for func in _load_configure_func().values():
         if func[0] == "b_check_running_user":
             func[1](install_mode=install_mode)
+        elif func[0] == "c_check_java_version":
+            func[1](install_mode=install_mode, user=user)
         elif func[0] == "d_check_disk_space":
             if install_mode:
                 func[1](chorus_path)

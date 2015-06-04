@@ -186,7 +186,7 @@ def install():
             print text.get("error_msg", "program_abort") % msg
             return
     if not options.disable_spec:
-        system_checking(True, chorus_path)
+        system_checking(True, chorus_path, user)
 
     if msg in ["Install", "Re-install"]:
         output(bold(text.get("step_msg", "install_chorus") % (msg+"ing", version)))

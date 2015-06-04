@@ -29,11 +29,23 @@ def b_check_runing_user(install_mode=False):
             raise Exception("Please don't run this program as root")
     check()
 
-def c_check_java_version():
+def c_check_java_version(install_mode=False, user=None):
     executor = ChorusExecutor()
     @processify(msg=text.get("step_msg", "check_java"))
     def check():
-        ret, stdout, stderr = executor.run("java -version 2>&1")
+        if install_mode and user is not None:
+            ret, stdout, stderr = executor.run("su - %s -c 'echo $JAVA_HOME'" % user)
+            if ret == 0 and stdout.strip("\n") != "":
+                command = "su - %s -c '$JAVA_HOME/bin/java -version 2>&1'" % user
+            else:
+                command = "su - %s -c 'java -version 2>&1'" % user
+        else:
+            if os.getenv("JAVA_HOME") == None:
+                command = "java -version 2>&1"
+            else:
+                command = "$JAVA_HOME/bin/java -version 2>&1"
+
+        ret, stdout, stderr = executor.run(command)
         if "command not found" in stdout:
             raise Exception("no java installed, please install ocacle jdk")
         elif "openjdk" in stdout.lower():
