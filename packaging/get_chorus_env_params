@@ -4,11 +4,16 @@ import re
 from setup import configParser
 
 ConfigParser = configParser.ConfigParser
+DEFAULT_CHORUS_CONFIG=None
+CHORUS_CONFIG=None
+if os.path.lexists(os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.defaults.properties")):
+    DEFAULT_CHORUS_CONFIG = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.defaults.properties")
 if os.path.lexists(os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.properties")):
     CHORUS_CONFIG = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.properties")
-else:
-    CHORUS_CONFIG = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config/chorus.defaults.properties")
-chorus_config = ConfigParser(CHORUS_CONFIG)
+
+chorus_config = ConfigParser()
+chorus_config.read(DEFAULT_CHORUS_CONFIG)
+chorus_config.read(CHORUS_CONFIG)
 #print chorus_config
 print "export CHORUS_NEWRELIC_ENABLED=\"%s\"" % chorus_config["newrelic.enabled"]
 print "export CHORUS_NEWRELIC_LICENSE_KEY=\"%s\"" % chorus_config["newrelic.license_key"]

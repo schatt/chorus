@@ -1,8 +1,10 @@
 class ConfigParser(dict):
-    def __init__(self, file_name):
+    def __init__(self, file_name=None):
        # self._dic = {}
         super(ConfigParser, self).__init__()
         self._config = []
+        if file_name is None:
+            return
         with open(file_name, 'r') as f:
             count = 0
             for line in f:
@@ -12,6 +14,15 @@ class ConfigParser(dict):
                 else:
                     self[line.strip("\n")] = None
                 count += 1
+
+    def read(self, file_name):
+        if file_name is None:
+            return
+        with open(file_name, 'r') as f:
+            for line in f:
+                if not line.lstrip().startswith("#") and '=' in line:
+                    line = line.split("=", 1)
+                    self[line[0].strip()] = line[1].lstrip().strip("\n")
 
     def write(self, file_name):
         with open(file_name, 'w') as f:
