@@ -443,7 +443,7 @@ class ChorusSetup:
             self.generate_chorus_rails_console_file()
             self.setup_database()
             #self.enqueue_solr_reindex()
-        self.clean_up_old_releases()
+        #self.clean_up_old_releases()
         self.link_current_to_release("current", self.release_path)
 
         if self.is_alpine_exits() and self.options.chorus_only is False:
