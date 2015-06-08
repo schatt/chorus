@@ -1,6 +1,4 @@
 module SolrIndexer
-  @@SolrQC = QC::Queue.new("indexer_queue")
-
   class QCStub
     def enqueue_if_not_queued(*args)
       SolrIndexer.log("Skipped indexer enqueue (See indexer.enabled in chorus.properties). Args: #{args}")
@@ -8,9 +6,13 @@ module SolrIndexer
   end
 
   def self.SolrQC
-    @@SolrQC unless ChorusConfig.instance['indexer'] && ChorusConfig.instance['indexer']['enabled'] == false
+    if ChorusConfig.instance['indexer'] && ChorusConfig.instance['indexer']['enabled'] == false
+      @@SolrQC ||= QCStub.new
+    else
+      @@SolrQC ||= QC::Queue.new("indexer_queue")
+    end
 
-    QCStub.new
+    @@SolrQC
   end
 
   def self.refresh_and_reindex(types)
