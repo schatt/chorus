@@ -39,8 +39,8 @@ describe DataSource do
     end
 
     it 'enqueues a refresh job' do
-      stub(QC.default_queue).enqueue_if_not_queued.any_times # for other jobs
-      mock(QC.default_queue).enqueue_if_not_queued('DataSource.refresh', anything, hash_including('new' => true))
+      stub(SolrIndexer.SolrQC).enqueue_if_not_queued.any_times # for other jobs
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued('DataSource.refresh', anything, hash_including('new' => true))
       FactoryGirl.create(:data_source)
     end
   end
@@ -82,7 +82,7 @@ describe DataSource do
     let(:data_source) { data_sources(:owners) }
 
     it 'enqueues a job' do
-      mock(QC.default_queue).enqueue_if_not_queued('DataSource.reindex_data_source', data_source.id)
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued('DataSource.reindex_data_source', data_source.id)
       data_source.solr_reindex_later
     end
   end
@@ -141,7 +141,7 @@ describe DataSource do
     let(:data_source) { data_sources(:owners) }
 
     it 'should enqueue a job' do
-      mock(QC.default_queue).enqueue_if_not_queued('DataSource.refresh_databases', data_source.id)
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued('DataSource.refresh_databases', data_source.id)
       data_source.refresh_databases_later
     end
   end
@@ -281,7 +281,7 @@ describe DataSource do
   describe ".solr_reindex_later" do
     let(:data_source) { data_sources(:owners) }
     it "should enqueue a job" do
-      mock(QC.default_queue).enqueue_if_not_queued("DataSource.reindex_data_source", data_source.id)
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued("DataSource.reindex_data_source", data_source.id)
       data_source.solr_reindex_later
     end
   end

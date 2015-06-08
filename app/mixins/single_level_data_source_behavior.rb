@@ -43,7 +43,7 @@ module SingleLevelDataSourceBehavior
       if schema.data_source_account_ids.sort != account_ids.sort
         schema.data_source_account_ids = account_ids
         schema.save!
-        QC.enqueue_if_not_queued("#{schema.class.name}.reindex_datasets", schema.id)
+        SolrIndexer.SolrQC.enqueue_if_not_queued("#{schema.class.name}.reindex_datasets", schema.id)
       end
     end
   end

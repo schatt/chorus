@@ -1,4 +1,18 @@
 module SolrIndexer
+  @@SolrQC = QC::Queue.new("indexer_queue")
+
+  class QCStub
+    def enqueue_if_not_queued(*args)
+      SolrIndexer.log("Skipped indexer enqueue (See indexer.enabled in chorus.properties). Args: #{args}")
+    end
+  end
+
+  def self.SolrQC
+    @@SolrQC unless ChorusConfig.instance['indexer'] && ChorusConfig.instance['indexer']['enabled'] == false
+
+    QCStub.new
+  end
+
   def self.refresh_and_reindex(types)
     self.refresh_external_data
     self.reindex(types)
@@ -14,10 +28,10 @@ module SolrIndexer
   def self.refresh_external_data
     self.log("Starting Solr Refresh")
     DataSource.find_each do |ds|
-      QC.enqueue_if_not_queued("DataSource.refresh", ds.id, 'mark_stale' => true, 'force_index' => false)
+      self.SolrQC.enqueue_if_not_queued("DataSource.refresh", ds.id, 'mark_stale' => true, 'force_index' => false)
     end
     HdfsDataSource.find_each do |ds|
-      QC.enqueue_if_not_queued("HdfsDataSource.refresh", ds.id)
+      self.SolrQC.enqueue_if_not_queued("HdfsDataSource.refresh", ds.id)
     end
     self.log("Solr Refreshes Queued")
   end

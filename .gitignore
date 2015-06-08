@@ -94,3 +94,8 @@ screenshot*.html
 
 # Ignore built hadoop jars
 /vendor/hadoop/hdfs-query-service*.jar
+
+# Python related
+__pycache__/
+*.py[cod]
+*$py.class

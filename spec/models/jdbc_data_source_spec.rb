@@ -96,7 +96,7 @@ describe JdbcDataSource do
       it 'enqueues a reindex_datasets worker for each schema if accounts were changed' do
         schema.data_source_accounts = []
         schema.data_source_accounts.find_by_id(account_with_access.id).should be_nil
-        mock(QC.default_queue).enqueue_if_not_queued('JdbcSchema.reindex_datasets', schema.id).once
+        mock(SolrIndexer.SolrQC).enqueue_if_not_queued('JdbcSchema.reindex_datasets', schema.id).once
         data_source.refresh_schemas
         data_source.refresh_schemas
       end

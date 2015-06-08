@@ -4,11 +4,11 @@ describe SolrIndexer do
   describe ".refresh_external_data" do
     it "refreshes Oracle, Gpdb, and Hadoop Data Sources" do
       DataSource.pluck(:id).each do |id|
-        mock(QC.default_queue).enqueue_if_not_queued("DataSource.refresh", id, 'mark_stale' => true, 'force_index' => false)
+        mock(SolrIndexer.SolrQC).enqueue_if_not_queued("DataSource.refresh", id, 'mark_stale' => true, 'force_index' => false)
       end
 
       HdfsDataSource.pluck(:id).each do |id|
-        mock(QC.default_queue).enqueue_if_not_queued("HdfsDataSource.refresh", id)
+        mock(SolrIndexer.SolrQC).enqueue_if_not_queued("HdfsDataSource.refresh", id)
       end
 
       SolrIndexer.refresh_external_data

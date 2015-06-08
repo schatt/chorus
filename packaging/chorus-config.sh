@@ -54,6 +54,7 @@ NGINX_PID_FILE=$CHORUS_HOME/tmp/pids/nginx.pid
 JETTY_PID_FILE=$CHORUS_HOME/tmp/pids/jetty.pid
 SCHEDULER_PID_FILE=$CHORUS_HOME/tmp/pids/scheduler.$RAILS_ENV.pid
 WORKER_PID_FILE=$CHORUS_HOME/tmp/pids/worker.$RAILS_ENV.pid
+INDEXER_PID_FILE=$CHORUS_HOME/tmp/pids/indexer.$RAILS_ENV.pid
 MIZUNO_PID_FILE=$CHORUS_HOME/tmp/pids/mizuno.pid
 
 POSTGRES_DATA_DIR=$CHORUS_HOME/postgres-db

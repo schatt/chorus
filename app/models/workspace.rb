@@ -105,7 +105,7 @@ class Workspace < ActiveRecord::Base
 
 
   def solr_reindex_later
-    QC.enqueue_if_not_queued('Workspace.reindex_workspace', id)
+    SolrIndexer.SolrQC.enqueue_if_not_queued('Workspace.reindex_workspace', id)
   end
 
   has_shared_search_fields [
@@ -349,7 +349,7 @@ class Workspace < ActiveRecord::Base
   private
 
   def reindex_sandbox
-    QC.enqueue_if_not_queued("Schema.reindex_datasets", sandbox.id) if sandbox
+    SolrIndexer.SolrQC.enqueue_if_not_queued("Schema.reindex_datasets", sandbox.id) if sandbox
   end
 
   def skip_sandbox?(options, account)

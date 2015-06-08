@@ -33,7 +33,7 @@ class ServiceScheduler
     end
 
     every(ChorusConfig.instance['reindex_search_data_interval_hours'].hours, 'SolrIndexer.refresh_external_data') do
-      QC.enqueue_if_not_queued('SolrIndexer.refresh_external_data')
+      SolrIndexer.SolrQC.enqueue_if_not_queued('SolrIndexer.refresh_external_data')
     end
 
     every(ChorusConfig.instance['reset_counter_cache_interval_hours'].hours, 'Tag.reset_all_counters') do

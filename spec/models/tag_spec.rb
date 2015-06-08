@@ -149,12 +149,12 @@ describe Tag do
     end
 
     it "should not reindex tagged objects after create" do
-      dont_allow(QC.default_queue).enqueue_if_not_queued("SolrIndexer.reindex_objects", anything)
+      dont_allow(SolrIndexer.SolrQC).enqueue_if_not_queued("SolrIndexer.reindex_objects", anything)
       Tag.create!(name: "another-tag")
     end
 
     it "should reindex tagged objects after update" do
-      mock(QC.default_queue).enqueue_if_not_queued.with_any_args do |*args|
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued.with_any_args do |*args|
         args[0].should == "SolrIndexer.reindex_objects"
         args[1].should =~ job_args
       end
@@ -163,7 +163,7 @@ describe Tag do
     end
 
     it "should reindex tagged objects after destroy" do
-      mock(QC.default_queue).enqueue_if_not_queued.with_any_args do |*args|
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued.with_any_args do |*args|
         args[0].should == "SolrIndexer.reindex_objects"
         args[1].should =~ job_args
       end

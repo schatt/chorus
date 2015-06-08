@@ -182,8 +182,8 @@ describe DataSourcesController do
       end
 
       it 'schedules a job to refresh the data source' do
-        stub(QC.default_queue).enqueue_if_not_queued(anything, anything)
-        mock(QC.default_queue).enqueue_if_not_queued('DataSource.refresh', numeric, {'new' => true})
+        stub(SolrIndexer.SolrQC).enqueue_if_not_queued(anything, anything)
+        mock(SolrIndexer.SolrQC).enqueue_if_not_queued('DataSource.refresh', numeric, {'new' => true})
         post :create, :data_source => valid_attributes
       end
 
@@ -218,8 +218,8 @@ describe DataSourcesController do
       end
 
       it 'schedules a job to refresh the data source' do
-        stub(QC.default_queue).enqueue_if_not_queued(anything, anything)
-        mock(QC.default_queue).enqueue_if_not_queued('DataSource.refresh', numeric, {'new' => true})
+        stub(SolrIndexer.SolrQC).enqueue_if_not_queued(anything, anything)
+        mock(SolrIndexer.SolrQC).enqueue_if_not_queued('DataSource.refresh', numeric, {'new' => true})
         post :create, :data_source => valid_attributes
       end
 

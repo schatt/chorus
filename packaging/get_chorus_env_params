@@ -36,3 +36,7 @@ if os.getenv("RAILS_ENV") == "production":
 
 print "JRUBY_OPTS=\"%s\"" % " ".join(jruby_opts)
 
+# Properties relating to toggling/configuration of startup of a service using chorus.properties (indexer for now)
+# (replaces get_chorus_startup_properties.rb)
+if 'indexer.enabled' in chorus_config and chorus_config['indexer.enabled'] == 'false':
+    print "export INDEXER_DISABLED=1"

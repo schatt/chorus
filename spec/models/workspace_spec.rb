@@ -508,7 +508,7 @@ describe Workspace do
   describe "#solr_reindex_later" do
     let(:workspace) { workspaces(:public) }
     it "should enqueue a job" do
-      mock(QC.default_queue).enqueue_if_not_queued("Workspace.reindex_workspace", workspace.id)
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued("Workspace.reindex_workspace", workspace.id)
       workspace.solr_reindex_later
     end
   end
@@ -728,14 +728,14 @@ describe Workspace do
     let(:schema_id) { workspace.sandbox.id }
 
     it 'enqueue a reindex of the sandbox' do
-      mock(QC.default_queue).enqueue_if_not_queued("Schema.reindex_datasets", schema_id)
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued("Schema.reindex_datasets", schema_id)
       workspace.show_sandbox_datasets = !workspace.show_sandbox_datasets
       workspace.save!
     end
 
     it 'does not do that by accident' do
-      stub(QC.default_queue).enqueue_if_not_queued.with_any_args
-      dont_allow(QC.default_queue).enqueue_if_not_queued("Schema.reindex_datasets", anything)
+      stub(SolrIndexer.SolrQC).enqueue_if_not_queued.with_any_args
+      dont_allow(SolrIndexer.SolrQC).enqueue_if_not_queued("Schema.reindex_datasets", anything)
       workspace.toggle(:public)
       workspace.save!
     end

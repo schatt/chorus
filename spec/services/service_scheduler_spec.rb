@@ -75,8 +75,8 @@ describe ServiceScheduler do
       job_scheduler.job_named('SolrIndexer.refresh_external_data').period.should == ChorusConfig.instance['reindex_search_data_interval_hours'].hours
     end
 
-    it "enqueues the 'SolrIndexer.refresh_external_data' job in QC" do
-      mock(QC.default_queue).enqueue_if_not_queued("SolrIndexer.refresh_external_data")
+    it "enqueues the 'SolrIndexer.refresh_external_data' job in SolrQC" do
+      mock(SolrIndexer.SolrQC).enqueue_if_not_queued("SolrIndexer.refresh_external_data")
       job_scheduler.job_named('SolrIndexer.refresh_external_data').run(Time.current)
     end
   end

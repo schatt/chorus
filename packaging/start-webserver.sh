@@ -13,7 +13,7 @@ bin=`cd "$bin"; pwd`
 # in production, start jetty in background
 
 STARTING="web server"
-depends_on postgres solr
+depends_on postgres
 
 # If NGINX is already running
 if ( test -f $NGINX_PID_FILE ) && ( kill -0 `cat $NGINX_PID_FILE` > /dev/null 2>&1 ); then

@@ -45,6 +45,6 @@ class Tag < ActiveRecord::Base
     objects_to_reindex = taggings.map(&:taggable).map do |obj|
       [obj.class.to_s, obj.id]
     end
-    QC.enqueue_if_not_queued("SolrIndexer.reindex_objects", objects_to_reindex)
+    SolrIndexer.SolrQC.enqueue_if_not_queued("SolrIndexer.reindex_objects", objects_to_reindex)
   end
 end
