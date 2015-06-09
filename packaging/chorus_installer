@@ -68,8 +68,8 @@ def detect_pre_version(chorus_path):
     if os.path.lexists(current_path) and os.path.islink(current_path):
         pre_version = os.path.basename(os.path.realpath(current_path))
         pre_version = pre_version.split("-")[0]
-        return pre_version
-    return None
+        return pre_version, os.path.realpath(current_path)
+    return None, None
 
 def compare_version(cur, pre):
     cur = int(cur.replace(".", ""))
@@ -109,6 +109,18 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
         grant_permission(user, chorus_path, data_path, release_path)
     copy()
 
+def clean_up_old_releases(chorus_path, pre_release, cur_release):
+    releases_path = os.path.join(chorus_path, "releases")
+    if os.path.lexists(os.path.join(chorus_path, "current")):
+        pre_release = os.path.realpath(os.path.join(chorus_path, "current"))
+    releases = [f for f in glob.glob(os.path.join(releases_path, "*")) if os.path.isdir(f) and not f == cur_release and not f == pre_release]
+    if len(releases) > 0:
+        releases.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+        if cur_release == pre_release:
+            releases = releases[1:]
+        for path in releases:
+            logger.debug("removing old release " + path)
+            run("rm -rf %s" % path)
 
 def install():
     if not os.getuid() == 0:
@@ -168,7 +180,7 @@ def install():
     if ret != 0:
         raise Exception("[ERROR] " + stderr)
     release_path = os.path.join(chorus_path, "releases/%s" % version)
-    pre_version = detect_pre_version(chorus_path)
+    pre_version, pre_release_path = detect_pre_version(chorus_path)
     cur_version = version.split("-")[0]
     msg = text.get("common", "install")
     if pre_version is not None:
@@ -215,8 +227,11 @@ def install():
     if not install_alpine:
         _chorus_only = "--chorus_only"
 
-    run_as_user("%s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
-                 (os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only), user)
+    ret = run_as_user("%s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
+                      (os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only), user)
+    if ret == 0:
+        clean_up_old_releases(chorus_path, pre_release_path, release_path)
+
 
 try:
     signal.signal(signal.SIGINT, exit_gracefully)

@@ -372,19 +372,6 @@ class ChorusSetup:
                 shutil.copytree(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY"), alpine_data_repo)
         configure()
 
-    def clean_up_old_releases(self):
-        releases_path = os.path.join(self.options.chorus_path, "releases")
-        previous_release = None
-        if os.path.lexists(os.path.join(self.options.chorus_path, "current")):
-            previous_release = os.path.realpath(os.path.join(self.options.chorus_path, "current"))
-        releases = [f for f in glob.glob(os.path.join(releases_path, "*")) if os.path.isdir(f) and not f == self.release_path and not f == previous_release]
-        if len(releases) > 0:
-            releases.sort(key=lambda x: os.path.getmtime(x), reverse=True)
-            if self.release_path == previous_release:
-                releases = releases[1:]
-            for path in releases:
-                logger.debug("removing old release " + path)
-                shutil.rmtree(path)
 
     def link_current_to_release(self, link_name, rel_path):
         current = os.path.join(self.options.chorus_path, link_name)

@@ -42,8 +42,10 @@ class ChorusExecutor:
         only can be used as root user (only useful in install mode)
         """
         def demote(user_uid, user_gid):
-            os.setgid(user_gid)
-            os.setuid(user_uid)
+            def result():
+                os.setgid(user_gid)
+                os.setuid(user_uid)
+            return result
         pw_record = pwd.getpwnam(user)
         user_uid = pw_record.pw_uid
         user_gid = pw_record.pw_gid
