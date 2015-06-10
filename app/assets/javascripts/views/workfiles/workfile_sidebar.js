@@ -98,7 +98,8 @@ chorus.views.WorkfileSidebar = chorus.views.Sidebar.extend({
             showUpdatedTime: this.options.showUpdatedTime,
             showVersions: this.options.showVersions,
             showRunWorkflow: workspaceActive && this.model.isAlpine() && canUpdate,
-            isRunning: this.model.get('status') === 'running'
+            isRunning: this.model.get('status') === 'running',
+            inWorkfile: this.options.inWorkfile,
         };
 
         if (this.model) {
@@ -209,7 +210,6 @@ chorus.views.WorkfileSidebar = chorus.views.Sidebar.extend({
         if (!chorus.views[this.typeMap[workfileType]]) {
             return new chorus.views.WorkfileSidebar(options);
         }
-
         return new chorus.views[this.typeMap[workfileType]](options);
     }
 });

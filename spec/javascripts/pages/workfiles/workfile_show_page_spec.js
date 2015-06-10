@@ -105,7 +105,8 @@ describe("chorus.pages.WorkfileShowPage", function() {
 
                 it('instantiates the sidebar view', function() {
                     expect(this.page.sidebar).toBeDefined();
-                    expect(chorus.views.WorkfileSidebar.buildFor).toHaveBeenCalled();
+                    var sidebar_options = {model: this.page.model, showVersions: true, showSchemaTabs: true, inWorkflow: true}
+                    expect(chorus.views.WorkfileSidebar.buildFor).toHaveBeenCalledWith(sidebar_options);
                 });
 
                 it("renders again", function() {

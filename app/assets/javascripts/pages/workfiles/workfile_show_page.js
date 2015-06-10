@@ -45,7 +45,7 @@ chorus.pages.WorkfileShowPage = chorus.pages.Base.extend({
             contentDetails: chorus.views.WorkfileContentDetails.buildFor(this.model, contentView)
         });
 
-        this.sidebar = chorus.views.WorkfileSidebar.buildFor({model: this.model, showVersions: true, showSchemaTabs: true});
+        this.sidebar = chorus.views.WorkfileSidebar.buildFor({model: this.model, showVersions: true, showSchemaTabs: true, inWorkfile: true});
         this.subNav = new chorus.views.SubNav({workspace:this.workspace, tab:"workfiles"});
 
         if (this.model.isLatestVersion() && this.model.get("hasDraft") && !this.model.isDraft) {

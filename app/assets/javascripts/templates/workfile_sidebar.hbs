@@ -5,7 +5,13 @@
         {{/if}}
     </div>
     <div class="actions">
-        <label>{{t "sidebar.selected.one"}}</label>
+        <label>
+            {{#if inWorkfile}}
+                {{t "sidebar.workfile_actions"}}
+            {{else}}
+                {{t "sidebar.selected.one"}}
+            {{/if}}
+        </label>
         <ul>
             {{#if showRunWorkflow}}
                 {{#unless isRunning}}
