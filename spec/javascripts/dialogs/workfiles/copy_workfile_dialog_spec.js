@@ -41,6 +41,7 @@ describe("chorus.dialogs.CopyWorkfile", function() {
             beforeEach(function() {
                 spyOn(chorus, "toast");
                 spyOn(chorus.router, "navigate");
+                spyOn(chorus.PageEvents, "trigger");
                 spyOn(this.dialog, "closeModal");
 
                 this.dialog.workfile = this.workfile;
@@ -101,6 +102,10 @@ describe("chorus.dialogs.CopyWorkfile", function() {
 
                 it("does not navigate", function() {
                     expect(chorus.router.navigate).not.toHaveBeenCalled();
+                });
+
+                it("triggers the collection fetch event", function(){
+                   expect(chorus.PageEvents.trigger).toHaveBeenCalled();
                 });
             });
 

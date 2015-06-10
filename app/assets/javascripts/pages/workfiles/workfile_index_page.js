@@ -10,7 +10,6 @@ chorus.pages.WorkfileIndexPage = chorus.pages.Base.include(
         this.collection.sortAsc("fileName");
         this.collection.fetch();
 
-        this.setupOnSearched();
 
         this.subNav = new chorus.views.SubNav({workspace: this.workspace, tab: "workfiles"});
         this.mainContent = new chorus.views.MainContentList({
@@ -39,6 +38,10 @@ chorus.pages.WorkfileIndexPage = chorus.pages.Base.include(
                 placeholder: t("workfile.search_placeholder"),
                 onTextChange: this.debouncedCollectionSearch()
             }
+        });
+
+        this.subscribePageEvent("workfiles:fetch", function() {
+           this.collection.fetch();
         });
 
         this.subscribePageEvent("workfile:search", function() {
