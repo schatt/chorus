@@ -6,6 +6,7 @@ describe WorkfileDownloadController do
   let(:user) { workspace.owner }
   let(:workfile) { workfiles(:public) }
   let(:workfile_version) { workfile_versions(:public) }
+  let(:expected_filename) { workfile.file_name }
 
   before do
     log_in user
@@ -22,7 +23,7 @@ describe WorkfileDownloadController do
         get :show, :workfile_id => workfile.id
 
         response.headers['Content-Disposition'].should include("attachment")
-        response.headers['Content-Disposition'].should include('filename="some.txt"')
+        response.headers['Content-Disposition'].should include("filename=\"#{expected_filename}\"")
         response.headers['Content-Type'].should == 'text/plain'
       end
     end
@@ -37,7 +38,8 @@ describe WorkfileDownloadController do
         response.body.should include ("<!DOCTYPE")
         response.body.should_not include ("lame")
         response.headers['Content-Disposition'].should include("attachment")
-        response.headers['Content-Disposition'].should include('filename="some.txt"')
+        #response.headers['Content-Disposition'].should include("filename=#{expected_filename}")
+        response.headers['Content-Disposition'].should include("filename=\"#{expected_filename}\"")
         response.headers['Content-Type'].should == 'text/plain'
       end
     end
@@ -68,7 +70,7 @@ describe WorkfileDownloadController do
 
     it_behaves_like "prefixed file downloads" do
       let(:do_request) { get :show, :workfile_id => workfile.id }
-      let(:expected_filename) { "some.txt" }
+      let(:expected_filename) { workfile.file_name }
     end
   end
 end
