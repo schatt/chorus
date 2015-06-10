@@ -65,7 +65,7 @@ Makeself version $MS_VERSION
   \$0 --lsm    Print embedded lsm entry (or no LSM)
   \$0 --list   Print the list of files in the archive
   \$0 --check  Checks integrity of the archive
- 
+
  2) Running \$0 :
   \$0 [options] [--] [additional arguments to embedded script]
   with following options (in that order)
@@ -78,6 +78,15 @@ Makeself version $MS_VERSION
   --target NewDirectory Extract in NewDirectory
   --tar arg1 [arg2 ...] Access the contents of the archive through the tar command
   --                    Following arguments will be passed to the embedded script
+  [additional arguments to embedded script]:
+  --chorus_user=CHORUS_USER  provide the chorus user [default: chorus]
+  --chorus_path=CHORUS_PATH  provide the chorus path [default: /usr/local/chorus]
+  --data_path=DATA_PATH      provide the chorus data path [default: /data/chorus]
+  --passphrase=PASSPHRASE    provide the passphrase [default: '']
+  --disable_spec             disable the spec check [default: False]
+  --chorus_only              only setup chorus, will not install alpine [default: False]
+  -s, --silent               runing script silently [default: False]
+  -f, --force                force reinitialize the database [default: False]
 EOH
 }
 
