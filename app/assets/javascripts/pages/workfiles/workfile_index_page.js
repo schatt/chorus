@@ -10,6 +10,7 @@ chorus.pages.WorkfileIndexPage = chorus.pages.Base.include(
         this.collection.sortAsc("fileName");
         this.collection.fetch();
 
+        this.setupOnSearched();
 
         this.subNav = new chorus.views.SubNav({workspace: this.workspace, tab: "workfiles"});
         this.mainContent = new chorus.views.MainContentList({
