@@ -236,7 +236,7 @@ def install():
         clean_up_old_releases(chorus_path, pre_release_path, release_path)
         if os.path.lexists(os.path.join(chorus_path, "alpine-current")):
             alpine_release_path = os.path.realpath(os.path.join(chorus_path, "alpine-current"))
-            clean_up_old_releases(chorus_path, pre_alpine_release_path, alpine_release_path)
+            clean_up_old_releases(chorus_path, pre_alpine_release_path, alpine_release_path, vendor="alpine-")
 
 
 try:
