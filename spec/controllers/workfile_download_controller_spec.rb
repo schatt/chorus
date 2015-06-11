@@ -38,7 +38,6 @@ describe WorkfileDownloadController do
         response.body.should include ("<!DOCTYPE")
         response.body.should_not include ("lame")
         response.headers['Content-Disposition'].should include("attachment")
-        #response.headers['Content-Disposition'].should include("filename=#{expected_filename}")
         response.headers['Content-Disposition'].should include("filename=\"#{expected_filename}\"")
         response.headers['Content-Type'].should == 'text/plain'
       end
@@ -58,19 +57,17 @@ describe WorkfileDownloadController do
 
         response.body.should include ("Valid content goes here")
         response.headers['Content-Disposition'].should include("attachment")
-        response.headers['Content-Disposition'].should include('filename="some.txt"')
+        response.headers['Content-Disposition'].should include("filename=\"#{expected_filename}\"")
         response.headers['Content-Type'].should == 'text/plain'
       end
 
       it_behaves_like "prefixed file downloads" do
         let(:do_request) { get :show, :workfile_id => workfile.id }
-        let(:expected_filename) { "some.txt" }
       end
     end
 
     it_behaves_like "prefixed file downloads" do
       let(:do_request) { get :show, :workfile_id => workfile.id }
-      let(:expected_filename) { workfile.file_name }
     end
   end
 end

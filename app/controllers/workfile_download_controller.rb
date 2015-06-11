@@ -16,11 +16,16 @@ class WorkfileDownloadController < ApplicationController
   def send_draft
     last_version = workfile.latest_workfile_version
 
+    # This line is necessary. If you don't change the last modified
+    # header the server will respond with a 304 and the filename
+    # will not get updated
+    headers['Last-Modified'] = Time.now.httpdate
+
     draft = workfile.drafts.find_by_owner_id(current_user.id)
     send_data draft.content,
               :disposition => 'attachment',
               :type => last_version.contents_content_type,
-              :filename => filename_for_download(last_version.contents_file_name)
+              :filename => filename_for_download(workfile.file_name)
   end
 
   def send_version(version_id)
