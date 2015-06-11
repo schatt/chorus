@@ -24,6 +24,13 @@ def failover(chorus_path, data_path, is_upgrade):
         except IOError:
             pass
 
+def os_distribution(os_name):
+    os_name = os_name.lower()
+    if "redhat" in os_name or "centos" in os_name or "red hat" in os_name:
+        return "redhat"
+    elif "suse" in os_name:
+        return "suse"
+
 def get_agents(alpine_conf):
     with open(alpine_conf, "r") as f:
         agent_dic = []

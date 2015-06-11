@@ -109,17 +109,15 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
         grant_permission(user, chorus_path, data_path, release_path)
     copy()
 
-def clean_up_old_releases(chorus_path, pre_release, cur_release):
-    releases_path = os.path.join(chorus_path, "releases")
-    if os.path.lexists(os.path.join(chorus_path, "current")):
-        pre_release = os.path.realpath(os.path.join(chorus_path, "current"))
+def clean_up_old_releases(chorus_path, pre_release, cur_release, vendor=""):
+    releases_path = os.path.join(chorus_path, vendor+"releases")
     releases = [f for f in glob.glob(os.path.join(releases_path, "*")) if os.path.isdir(f) and not f == cur_release and not f == pre_release]
     if len(releases) > 0:
         releases.sort(key=lambda x: os.path.getmtime(x), reverse=True)
         if cur_release == pre_release:
             releases = releases[1:]
         for path in releases:
-            logger.debug("removing old release " + path)
+            logger.debug("removing old " + vendor +"release " + path)
             run("rm -rf %s" % path)
 
 def install():
@@ -147,10 +145,10 @@ def install():
 
     ret, stdout, stderr = run("su - %s -c \'echo $CHORUS_HOME\'" % user)
     if ret == 0 and stdout.strip("\n") is not "":
-        fresh_install = False
         chorus_path = stdout.strip("\n")
         if os.path.lexists(os.path.join(chorus_path, "shared/db")):
             data_path = os.path.dirname(os.path.realpath(os.path.join(chorus_path, "shared/db")))
+            fresh_install = False
        # with open(dot_chorus, "r") as f:
        #     lines = f.readlines()
        #     user = lines[0].strip("\n")
@@ -168,14 +166,19 @@ def install():
         data_path = io.prompt(text.get("interview_question", "specify_data_path"), default=data_path)
 
         passphrase = io.prompt(text.get("interview_question", "specify_passphrase"), default=passphrase)
-        if not is_alpine_exists(installation_path):
-            install_alpine = False
+    pre_alpine_release_path = None
+    if not is_alpine_exists(installation_path):
+        install_alpine = False
+    else:
+        if install_alpine:
+            default = "yes"
         else:
-            if install_alpine:
-                default = "yes"
-            else:
-                default = "no"
+            default = "no"
+        if not os.path.lexists(os.path.join(chorus_path, "alpine-current")):
             install_alpine = io.require_confirmation(text.get("interview_question", "install_alpine"), default)
+        else:
+            pre_alpine_release_path = os.path.realpath(os.path.join(chorus_path, "alpine-current"))
+
     ret, stdout, stderr = run("mkdir -p %s && mkdir -p %s" % (chorus_path, data_path))
     if ret != 0:
         raise Exception("[ERROR] " + stderr)
@@ -231,6 +234,9 @@ def install():
                       (os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only), user)
     if ret == 0:
         clean_up_old_releases(chorus_path, pre_release_path, release_path)
+        if os.path.lexists(os.path.join(chorus_path, "alpine-current")):
+            alpine_release_path = os.path.realpath(os.path.join(chorus_path, "alpine-current"))
+            clean_up_old_releases(chorus_path, pre_alpine_release_path, alpine_release_path)
 
 
 try:

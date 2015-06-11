@@ -9,14 +9,15 @@ from log import logger
 from chorus_executor import ChorusExecutor
 from func_executor import processify
 from text import text
+from helper import os_distribution
 
 def a_check_os_system():
     @processify(msg=text.get("step_msg", "check_os"))
     def check():
         os_name, version, release = platform.linux_distribution()
-        if os_name.lower() in ["redhat", "centos"] and re.match(r"^[5|6]", version):
+        if os_distribution(os_name) == "redhat" and re.match(r"^[5|6]", version):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
-        elif os_name.lower() == "suse" and version.startswith(11):
+        elif os_distribution(os_name) == "suse" and version.startswith(11):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
         else:
             raise Exception("os version %s-%s-%s not supported!" % (os_name, version, release))
