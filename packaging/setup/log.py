@@ -1,6 +1,8 @@
 import os, sys, getpass
 import logging
-
+from os.path import expanduser
+home = expanduser("~")
+log_path = os.path.join(home, "install.log")
 def getLogger():
     logger = logging.getLogger(getpass.getuser())
     logger.setLevel(logging.DEBUG)
@@ -14,7 +16,7 @@ def getLogger():
 
     #create file handler and set level to debug
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s : %(message)s')
-    fileHandler = logging.FileHandler('/tmp/install.log')
+    fileHandler = logging.FileHandler(log_path)
     fileHandler.setLevel(level=logging.DEBUG)
     fileHandler.setFormatter(formatter)
     logger.addHandler(fileHandler)
@@ -22,3 +24,4 @@ def getLogger():
     return logger
 
 logger = getLogger()
+

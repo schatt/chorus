@@ -372,7 +372,6 @@ class ChorusSetup:
                 shutil.copytree(os.path.join(self.alpine_release_path, "ALPINE_DATA_REPOSITORY"), alpine_data_repo)
         configure()
 
-
     def link_current_to_release(self, link_name, rel_path):
         current = os.path.join(self.options.chorus_path, link_name)
         if os.path.lexists(current):

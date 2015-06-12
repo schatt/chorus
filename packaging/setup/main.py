@@ -6,8 +6,9 @@ from helper import failover, is_upgrade
 from chorus_setup import chorus_set
 from health_check import health_check, system_checking
 from configure import configure
-from log import logger
+from log import logger, log_path
 from color import bold, error
+from text import text
 import traceback
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 options, arg, health_args = get_options(sys.argv)
@@ -32,6 +33,7 @@ def main():
         else:
             handler[arg](options, is_upgrade)
     except Exception as e:
-        logger.error(error(str(e) + "\nException Occured, see /tmp/install.log for details" ))
+        logger.error(error(str(e) + "\n" + text.get("error_msg", "exception") % log_path))
         logger.debug(traceback.format_exc())
         failover(options.chorus_path, options.data_path, is_upgrade)
+        exit(1)

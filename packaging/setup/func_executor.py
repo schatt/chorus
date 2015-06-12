@@ -19,16 +19,16 @@ def processify(msg='', interval=0.5):
             q = Queue()
             p = Process(target=process_func, args=[q]+list(args), kwargs=kwargs)
             p.start()
-            print msg
+            sys.__stdout__.write(msg+"\n")
             while p.is_alive():
                 sys.stdout.write(".")
                 sys.stdout.flush()
                 time.sleep(interval)
             ret, error = q.get()
             if error:
-                print "\r" + "." * 60 + fail()
+                sys.__stdout__.write("\r" + "." * 60 + fail() + "\n")
                 raise Exception(error)
-            print "\r" + "." * 60 + done()
+            sys.__stdout__.write("\r" + "." * 60 + done() + "\n")
             return ret
         return wrapper
     return wrap
