@@ -71,7 +71,7 @@ module PackageMaker
 
     FileUtils.ln_s File.join(rails_root, 'packaging/install.rb'), install_root
 
-    system("GZIP='--fast' #{rails_root}/packaging/makeself/makeself.sh --follow --nox11 --nowait #{install_root} chorus-#{version_name}.sh 'Chorus #{Chorus::VERSION::STRING} installer' #{labeler} ./chorus_installation/packaging/chorus_installer install") || exit(1)
+    system("GZIP='--fast' #{rails_root}/packaging/makeself/makeself.sh --follow --nox11 --nowait #{install_root} chorus-#{version_name}.sh 'Chorus #{Chorus::VERSION::STRING} installer' #{labeler} ./chorus_installation/bin/python ./chorus_installation/packaging/chorus_installer install") || exit(1)
   end
 
   def head_sha

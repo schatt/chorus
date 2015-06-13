@@ -9,7 +9,7 @@ if [ "$HOSTNAME" = chorus-ci ]; then
 fi
 
 . script/ci/setup.sh
-
+. script/ci/install_python.sh
 echo "checking for an alpine package"
 if [[ $(ls vendor/alpine/*.sh 2> /dev/null | wc -l) != "0" ]]; then
     echo "packaging with alpine"

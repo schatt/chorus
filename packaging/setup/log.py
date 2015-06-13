@@ -1,6 +1,5 @@
 import os, sys, getpass
 import logging
-from os.path import expanduser
 log_path = os.path.join("/tmp", "install.log")
 def getLogger():
     logger = logging.getLogger(getpass.getuser())

@@ -377,7 +377,8 @@ class ChorusSetup:
         if os.path.lexists(current):
             if not os.path.islink(current):
                 shutil.rmtree(current)
-            os.unlink(current)
+            else:
+                os.unlink(current)
         os.symlink(rel_path, current)
 
     def source_chorus_path(self):

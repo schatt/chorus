@@ -31,21 +31,24 @@ function should_handle () {
 function setup () {
   EXIT_STATUS=0
   pushd $CHORUS_HOME > /dev/null
-  chorus_server setup "$@"
+  $PYTHON ./packaging/setup/chorus_server setup "$@"
   EXIT_STATUS=`expr $EXIT_STATUS + $?`
+  popd > /dev/null
 }
 function health_check () {
   EXIT_STATUS=0
   pushd $CHORUS_HOME > /dev/null
-  chorus_server health_check "$@"
+  $PYTHON ./packaging/setup/chorus_server health_check "$@"
   EXIT_STATUS=`expr $EXIT_STATUS + $?`
+  popd > /dev/null
 
 }
 function configure () {
   EXIT_STATUS=0
   pushd $CHORUS_HOME > /dev/null
-  chorus_server configure "$@"
+  $PYTHON ./packaging/setup/chorus_server configure "$@"
   EXIT_STATUS=`expr $EXIT_STATUS + $?`
+  popd > /dev/null
 }
 function start () {
   EXIT_STATUS=0

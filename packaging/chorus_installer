@@ -240,11 +240,11 @@ def install():
         _chorus_only = "--chorus_only"
 
     if user != None:
-        ret = run_as_user("%s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
-                          (os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only), user)
+        ret = run_as_user("%s %s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
+                          (os.path.join(release_path, "bin/python"), os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only), user)
     else:
-        ret = call("%s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
-                                  (os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only))
+        ret = call("%s %s setup %s %s --chorus_path=%s --data_path=%s --disable_spec %s %s" % \
+                   (os.path.join(release_path, "bin/python"), os.path.join(release_path, "packaging/setup/chorus_server"), _s, _f, chorus_path, data_path, _passphrase, _chorus_only))
 
     if ret == 0:
         clean_up_old_releases(chorus_path, pre_release_path, release_path)

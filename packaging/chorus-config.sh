@@ -32,10 +32,12 @@ case $RAILS_ENV in
     production )
         RUBY=$CHORUS_HOME/bin/ruby
         RAKE=$CHORUS_HOME/bin/rake
+        PYTHON=$CHORUS_HOME/bin/python
         ;;
     * )
         RUBY=jruby
         RAKE=rake
+		PYTHON=python
         ;;
 esac
 
@@ -60,7 +62,7 @@ MIZUNO_PID_FILE=$CHORUS_HOME/tmp/pids/mizuno.pid
 POSTGRES_DATA_DIR=$CHORUS_HOME/postgres-db
 POSTGRES_PID_FILE=$POSTGRES_DATA_DIR/postmaster.pid
 
-eval $($CHORUS_HOME/packaging/get_chorus_env_params)
+eval $($PYTHON $CHORUS_HOME/packaging/get_chorus_env_params)
 
 
 ##### Determine which nginx binary to use for this platform #####
