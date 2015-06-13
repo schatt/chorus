@@ -1,8 +1,7 @@
 import os, sys, getpass
 import logging
 from os.path import expanduser
-home = expanduser("~")
-log_path = os.path.join(home, "install.log")
+log_path = os.path.join("/tmp", "install.log")
 def getLogger():
     logger = logging.getLogger(getpass.getuser())
     logger.setLevel(logging.DEBUG)
@@ -20,7 +19,7 @@ def getLogger():
     fileHandler.setLevel(level=logging.DEBUG)
     fileHandler.setFormatter(formatter)
     logger.addHandler(fileHandler)
-
+    os.chmod(log_path, 0777)
     return logger
 
 logger = getLogger()
