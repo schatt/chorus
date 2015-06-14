@@ -106,7 +106,7 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
         if ret != 0:
             raise Exception("[ERROR] " + stderr)
         if os.path.exists(release_path):
-            run("chown -R 0777 %s" % release_path)
+            run("chmod -R 0777 %s" % release_path)
             shutil.rmtree(release_path)
         ret, stdout, stderr = run("mkdir -p %s && cp -rf %s %s" % (release_path, installation_path, release_path))
         if ret != 0:
@@ -123,7 +123,7 @@ def clean_up_old_releases(chorus_path, pre_release, cur_release, vendor=""):
             releases = releases[1:]
         for path in releases:
             logger.debug("removing old " + vendor +"release " + path)
-            run("chown -R 0777 %s" % path)
+            run("chmod -R 0777 %s" % path)
             run("rm -rf %s" % path)
 
 def install():
