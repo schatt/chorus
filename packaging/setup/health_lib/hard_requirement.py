@@ -48,11 +48,18 @@ def c_check_java_version(install_mode=False, user=None):
 
         ret, stdout, stderr = executor.run(command)
         if "command not found" in stdout:
-            raise Exception("no java installed, please install ocacle jdk")
+            raise Exception("no java installed, please install oracle jdk")
         elif "openjdk" in stdout.lower():
             raise Exception("openjdk not supported, please install oracle jdk!")
         else:
-            java_version = stdout.split("\n")[0].split(" ")[2].strip("\"").split(".")[0:2]
+            java_version = None
+            for line in stdout.split("\n"):
+                if line.startswith("java version"):
+                    java_version = line
+                    break
+            if java_version is None:
+                raise Exception("java version not detected, please install oracle jdk")
+            java_version = java_version.split(" ")[2].strip("\"").split(".")[0:2]
             java_version = float(".".join(java_version))
             if java_version < 1.6:
                 raise Exception("%s\n only support java version > 1.6, please upgrade" % stdout)

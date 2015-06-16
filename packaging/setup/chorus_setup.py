@@ -357,7 +357,9 @@ class ChorusSetup:
         @processify(msg=text.get("step_msg", "setting_up_alpine") % self.alpine_version, interval=1.5)
         def configure():
             logger.debug("Extracting %s to %s" % (self.alpine_installer, self.alpine_release_path))
-            self.executor.run("sh %s --target %s --noexec" % (self.alpine_installer, self.alpine_release_path))
+            ret, stdout, stderr = self.executor.run("sh %s --target %s --noexec" % (self.alpine_installer, self.alpine_release_path))
+            if ret != 0:
+                raise Exception(stderr)
             logger.debug("Preparing Alpine Data Repository")
             alpine_data_repo = os.path.join(self.options.chorus_path, "shared/ALPINE_DATA_REPOSITORY")
             if os.path.exists(alpine_data_repo):
