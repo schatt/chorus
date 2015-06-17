@@ -71,7 +71,7 @@ def d_check_disk_space(dir):
         stat= os.statvfs(dir)
         free_space = stat.f_frsize*stat.f_bavail / (1024 * 1024 * 1024)
         logger.debug("free space in %s: %d" % (dir, free_space))
-        if free_space < 2:
+        if free_space < 6:
             raise Exception("Not enough space left in %s" % dir)
     check()
 #def d_check_open_port():

@@ -376,12 +376,7 @@ class ChorusSetup:
 
     def link_current_to_release(self, link_name, rel_path):
         current = os.path.join(self.options.chorus_path, link_name)
-        if os.path.lexists(current):
-            if not os.path.islink(current):
-                shutil.rmtree(current)
-            else:
-                os.unlink(current)
-        os.symlink(rel_path, current)
+        self._ln_sf(rel_path, current)
 
     def source_chorus_path(self):
         logger.debug("source %s/chorus_path.sh" % self.options.chorus_path)
