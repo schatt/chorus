@@ -2,6 +2,7 @@ chorus.dialogs.DatasetDownload = chorus.dialogs.Base.extend({
     constructorName: "DatasetDownload",
     templateName: "dataset_download",
     submitKey: "actions.download",
+    title: t("dataset.download.title"),
 
     events: {
         "click button.submit": "submitDownload"
@@ -11,15 +12,11 @@ chorus.dialogs.DatasetDownload = chorus.dialogs.Base.extend({
         this._super("setup", arguments);
         this.dataset = this.options.pageModel;
         this.model = this.resource = new chorus.models.DatasetDownloadConfiguration();
-        this.setTitle();
-    },
-
-    setTitle: function() {
-        this.title = t("dataset.download.title", {datasetName: this.dataset.name()});
     },
 
     additionalContext: function() {
         return {
+            datasetName: this.dataset.name(),
             submitKey: this.submitKey
         };
     },
