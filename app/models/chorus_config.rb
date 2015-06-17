@@ -187,8 +187,8 @@ class ChorusConfig
     versions = [
         'Cloudera CDH5',
         'Hortonworks HDP 2',
-        'IBM Big Insights 4.0'
-        #'MapR4'
+        'IBM Big Insights 4.0',
+        'MapR4'
     ]
     versions.sort
   end
