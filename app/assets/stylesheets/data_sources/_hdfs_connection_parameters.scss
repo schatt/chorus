@@ -18,4 +18,93 @@
         overflow-y: auto;
     }
 
+    .load_configuration_text {
+        font-weight: $semibold;
+        margin-top: 10px;
+    }
+
+    .load_configuration_area {
+      .links {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        float: right;
+        font-weight: $semibold;
+
+        .action {
+          border-left: 1px solid $link-color;
+          padding-left: $link-padding;
+          margin-left: $link-padding;
+        }
+
+        .action:first-child {
+          border-left: none;
+        }
+      }
+
+      $fieldset-width: $default-dialog-width - (2 * $dialog-padding-leftRight) - 10;
+
+      $field_max_width: 100%;
+      $field_half_width: 48%;
+      $field_large_width: 80%;
+      $field_small_width: 16%;
+      $field_spacing: 4%;
+
+      $hostname_width: 365px;
+      $account_width: 220px;
+      $input-spacing: 10px;
+
+      $size_width: 75px;
+      $width_margin_buffer: 5px;
+
+      margin-bottom: $dialog-padding-bottom;
+
+      // textarea {}
+
+      input {
+        box-sizing: border-box;
+      }
+
+      div {
+        &.general_data_source_fields {
+          margin-bottom: 20px;
+        }
+      }
+
+      .width_wide {
+        float: left;
+        width: 80%;
+        margin-right: 3%;
+      }
+      .width_small {
+        input {
+          width:17%;
+        }
+      }
+
+      .width_half_left {
+        float: left;
+        width: 49%;
+        margin-right: 3%;
+      }
+      .width_half_right {
+        input {
+          width: 48%;
+        }
+      }
+
+      .instructions {
+        @include dialog-label;
+        margin-top: 20px;
+        display: inline-block;
+      }
+
+      .disabled {
+        color: $color-text4;
+      }
+
+      .max_size {
+        @include dialog-label;
+      }
+    }
 }

@@ -59,6 +59,8 @@ describe("chorus.dialogs.HdfsConnectionParameters", function () {
                 expect(this.dialog.$('.pair').length).toBe(this.currentPairs - 1);
             });
         });
+
+        // TODO: Test the "hadoop_configuration_param_set" fetching dialog.
     });
 
     describe("submitting", function () {

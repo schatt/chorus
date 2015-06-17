@@ -22,6 +22,8 @@ Chorus::Application.routes.draw do
     end
   end
 
+  resources :hdfs_params, :only => [:index], :controller => 'hdfs/params'
+
   resources :hdfs_datasets, :only => [:create, :update, :destroy]
 
   resources :data_sources, :only => [:index, :show, :create, :update, :destroy] do

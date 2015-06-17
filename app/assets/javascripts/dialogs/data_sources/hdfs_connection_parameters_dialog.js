@@ -7,7 +7,10 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
     events: {
         'click a.add_pair': 'addPair',
         'click a.remove_pair': 'removePair',
-        'click button.submit': 'save'
+        'click button.submit': 'save',
+        'click a.external_config': 'showExternalConfig',
+        'click a.fetch_external_config': 'fetchExternalConfig',
+        'click a.cancel_external_config': 'cancelExternalConfig'
     },
 
     setup: function () {
@@ -45,10 +48,57 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
         });
     },
 
+    showExternalConfig: function(event) {
+        event && event.preventDefault();
+        this.$(".load_configuration_area").removeClass("hidden");
+    },
+
+    fetchExternalConfig: function(event) {
+        event && event.preventDefault();
+
+        this.fetchedParams = new chorus.collections.HadoopConfigurationParamSet({
+            host: this.$("#configuration_host").val(), //'10.0.0.146',
+            port: this.$("#configuration_port").val() //8088
+        });
+
+        this.listenTo(this.fetchedParams, "reset", this.populateFetchedParams);
+        this.listenTo(this.fetchedParams, "fetchFailed", this.configFetchFailed);
+
+        this.fetchedParams.fetch();
+    },
+
+    configFetchFailed: function(e) {
+        this.resource = this.fetchedParams;
+        //this.showErrors(this.fetchedParams);
+
+        chorus.toast("hdfs_connection_parameters.dialog.load_configuration.failure.toast", {
+            error_msg: this.fetchedParams.serverErrors.params,
+            toastOpts: { type: "error" }
+        });
+    },
+
+    populateFetchedParams: function() {
+        event && event.preventDefault();
+
+        var param_set = this.fetchedParams.models[0].attributes.params;
+
+        // Clears all existing config entries for now.
+        this.pairs = [];
+        for (var i = 0; i < param_set.length; i++) {
+            this.pairs.push({key: param_set[i].name, value: param_set[i].value});
+        }
+
+        this.render();
+    },
+
+    cancelExternalConfig: function(event) {
+        event && event.preventDefault();
+        this.$(".load_configuration_area").addClass("hidden");
+    },
+
     additionalContext: function () {
         return {
             connectionParameters: this.pairs
         };
     }
-
 });

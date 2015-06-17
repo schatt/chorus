@@ -15,6 +15,7 @@ gem 'nokogiri'
 gem 'sequel', '~> 4.0', :require => 'sequel/no_core_ext'
 gem 'attr_encrypted' #if you load attr_encrypted before sequel, it blows up saying 'sequel::model' is undefined
 gem 'chorusgnip', :github => 'Chorus/gnip'
+gem 'hadoopconf_gem', :github => 'Chorus/chorus-hadoop-conf', :ref => 'ce0d34dde0f5f4dd372af6406fafd9c5b2baac5f'
 gem 'logger-syslog'
 gem 'newrelic_rpm'
 gem 'premailer-rails'
@@ -87,6 +88,7 @@ end
 
 group :development do
   # gem 'tabcmd_gem', :path => "~/alpine/chorus-tableau" # otherwise is set in Gemfile-packaging
+  # gem 'hadoopconf_gem', :path => "~/alpine/chorus-hadoop-conf"
   gem 'license_finder', '~> 0.8.1', :require => false
   gem 'mizuno'
   gem 'bullet'

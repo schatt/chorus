@@ -23,6 +23,39 @@
                 </div>
             {{/each}}
         </div>
+
+        <div class="load_configuration_text">
+            <a href="#" class="external_config action">{{t "hdfs_connection_parameters.dialog.load_configuration.title"}}</a>
+        </div>
+
+        <div class="load_configuration_area hidden">
+            {{formInfoBlock "hdfs_connection_parameters.dialog.load_configuration.instructions"}}
+
+            <div class="multiple_fields">
+                <div class="width_wide">
+                    <label name="host" class="required" for="configuration_host">{{t "data_sources.dialog.host"}}</label>
+                </div>
+
+                <div class="width_small">
+                    <label name="port" class="port required" for="configuration_port">{{t "data_sources.dialog.port"}}</label>
+                </div>
+            </div>
+
+            <div class="multiple_fields">
+                <div class="width_wide">
+                    <input type="text" id="configuration_host" name="host" value="{{host}}"/>
+                </div>
+
+                <div class="width_small">
+                    <input type="text" class="port" id="configuration_port" name="port" value="{{port}}"/>
+                </div>
+            </div>
+
+            <div class="links">
+                <a href="#" class="fetch_external_config action">{{t "hdfs_connection_parameters.dialog.load_configuration.fetch"}}</a>
+                <a href="#" class="cancel_external_config action">{{t "actions.cancel"}}</a>
+            </div>
+        </div>
     </div>
     <!-- END girdle -->
     
