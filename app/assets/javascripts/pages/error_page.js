@@ -18,8 +18,10 @@ chorus.pages.Error = chorus.pages.Bare.extend({
     navigateToHome: function() {
         chorus.router.navigate("#");
     },
-    navigateBack: function() {
-        history.go(-1);
+
+    navigateBack: function(e) {
+        e.preventDefault();
+        window.history.go(-1)
     },
     
     context: function() {
