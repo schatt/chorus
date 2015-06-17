@@ -383,6 +383,7 @@ describe ChorusConfig do
             'Cloudera CDH5.3',
             'Hortonworks HDP 2',
             'Hortonworks HDP 2.2',
+            'IBM Big Insights 4.0',
             'MapR',
             'MapR4',
             'Pivotal HD 2',
