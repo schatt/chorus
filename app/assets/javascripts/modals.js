@@ -105,7 +105,7 @@ chorus.Modal = chorus.views.Base.extend({
         
         var $dialogInteriorContent = $("#dialog_content .girdle");
         $dialogInteriorContent.css("max-height", maxInteriorHeight + "px");
-        
+
 //         console.log ("modals.js > resize: max-height:" + maxInteriorHeight);
 //         console.log ("modals.js > resize: error-height:" + errorHeight);
 
@@ -116,6 +116,7 @@ chorus.Modal = chorus.views.Base.extend({
         var result = this._super('preRender', arguments);
 
         $(window).resize(this.resize);
+        $(window).resize(this.centerHorizontally);
 
         this.preventScrollingBody();
         return result;
