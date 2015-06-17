@@ -6,6 +6,14 @@ fi
 bin=`dirname "$bin"`
 bin=`cd "$bin"; pwd`
 
+if [ "$RAILS_ENV" = "" ]; then
+    if [ -f $CHORUS_HOME/.development ]; then
+        export RAILS_ENV=development
+    else
+        export RAILS_ENV=production
+    fi
+fi
+
 . "$bin"/chorus-config.sh
 
 export PATH=$PATH:$CHORUS_HOME/bin
