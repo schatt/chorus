@@ -20,7 +20,9 @@ class Presenter
 
     if (options[:cached] == true && model != nil && model.respond_to?(:id))
       if model.respond_to?(:updated_at)
-        cache_key = "#{options[:namespace]}/Users/#{current_user.id}/#{model.class.name}/#{model.id}-#{(model.updated_at.to_f * 1000).round(0)}"
+        user_updated_at = (current_user.updated_at.to_f * 1000).round(0)
+        model_updated_at = (model.updated_at.to_f * 1000).round(0)
+        cache_key = "#{options[:namespace]}/Users/#{current_user.id}-#{user_updated_at}/#{model.class.name}/#{model.id}-#{model_updated_at}"
       else
         cache_key = "#{options[:namespace]}/Users/#{current_user.id}/#{model.class.name}/#{model.id}"
       end
