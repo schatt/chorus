@@ -20,7 +20,7 @@ class HdfsEntryPresenter < Presenter
     end
 
     if model.is_directory
-      hash[:entries] = present model.entries if options[:deep]
+      hash[:entries] = present model.entries(true) if options[:deep]
       hash[:count] = model.content_count
     else
       hash[:contents] = model.contents if options[:deep]
