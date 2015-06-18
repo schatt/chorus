@@ -1,12 +1,9 @@
 chorus.dialogs.RunAndDownload = chorus.dialogs.DatasetDownload.extend({
     constructorName: "RunAndDownload",
     submitKey: "workfile.run_and_download_dialog.run",
+    title: t("workfile.run_and_download_dialog.title"),
 
     persistent:true,
-
-    setTitle: function() {
-        this.title = t("workfile.run_and_download_dialog.title");
-    },
 
     downloadAll: function() {
         chorus.PageEvents.trigger("file:runAndDownload", this.options);

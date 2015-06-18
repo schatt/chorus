@@ -16,7 +16,6 @@ chorus.dialogs.DatasetDownload = chorus.dialogs.Base.extend({
 
     additionalContext: function() {
         return {
-            datasetName: this.dataset.name(),
             submitKey: this.submitKey
         };
     },
