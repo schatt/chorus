@@ -116,7 +116,7 @@ def copy_to_dest(installation_path, chorus_path, data_path, release_path, user):
 
 def clean_up_old_releases(chorus_path, pre_release, cur_release, vendor=""):
     releases_path = os.path.join(chorus_path, vendor+"releases")
-    releases = [f for f in glob.glob(os.path.join(releases_path, "*")) if os.path.isdir(f) and not f == cur_release and not f == pre_release]
+    releases = [f for f in glob.glob(os.path.join(releases_path, "*")) if os.path.isdir(f) and not cur_release in f and not pre_release in f]
     if len(releases) > 0:
         releases.sort(key=lambda x: os.path.getmtime(x), reverse=True)
         if cur_release == pre_release:
