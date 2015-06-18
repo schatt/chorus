@@ -10,7 +10,7 @@ describe Hdfs::FilesController do
 
   describe "index" do
     it "renders the list of entries on root" do
-      mock(HdfsEntry).list('/', hdfs_data_source) { [entry] }
+      mock(HdfsEntry).list('/', hdfs_data_source, true) { [entry] }
       entry
       get :index, :hdfs_data_source_id => hdfs_data_source.id
 
@@ -35,7 +35,7 @@ describe Hdfs::FilesController do
   describe "show" do
     context "a directory" do
       before do
-        mock(HdfsEntry).list('/data/', hdfs_data_source) { [ hdfs_entries(:directory), hdfs_entries(:hdfs_file) ] }
+        mock(HdfsEntry).list('/data/', hdfs_data_source, true) { [ hdfs_entries(:directory), hdfs_entries(:hdfs_file) ] }
       end
 
       it "renders the path correctly, appending slashes" do
