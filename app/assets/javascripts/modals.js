@@ -146,7 +146,9 @@ chorus.Modal = chorus.views.Base.extend({
     },
 
     keydownHandler:function (e) {
+        e && e.preventDefault();
         if (e.keyCode === 27) {
+            e.preventDefault();
             this.escapePressed();
         }
     },
