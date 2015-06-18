@@ -63,10 +63,12 @@ chorus.models.Job = chorus.models.Base.extend({
 
     disable: function (callbacks) {
         this.save( {enabled: false}, _.extend({}, callbacks, { wait: true}) );
+        chorus.toast('job.actions.disable_message', {jobName: this.name()});
     },
 
     enable: function (callbacks) {
         this.save( {enabled: true}, _.extend({}, callbacks, { wait: true}) );
+        chorus.toast('job.actions.enable_message', {jobName: this.name()});
     },
 
     frequency: function () {
