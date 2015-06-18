@@ -37,7 +37,7 @@ chorus.Modal = chorus.views.Base.extend({
 // BEGIN: move .errors inside of .girdle
 // TODO: fix when dialogs are redone
 
-    $(".girdle").prepend($(".errors"));
+// $(".girdle").prepend($(".errors"));
 
 // END: move the .errors
 
