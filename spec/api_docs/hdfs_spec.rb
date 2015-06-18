@@ -27,9 +27,9 @@ resource "Hdfs" do
     service = Object.new
     stub(Hdfs::QueryService).for_data_source(data_source) { service }
     stub(service).show('/test.txt') { ["This is such a nice file.", "It's my favourite file.", "I could read this file all day.'"] }
-    stub(HdfsEntry).list('/', data_source) { [dir_entry, file_entry] }
-    stub(HdfsEntry).list('/files/', data_source) { [file_entry] }
-    stub(HdfsEntry).list('/test.txt', data_source) { [file_entry] }
+    stub(HdfsEntry).list('/', data_source, true) { [dir_entry, file_entry] }
+    stub(HdfsEntry).list('/files/', data_source, true) { [file_entry] }
+    stub(HdfsEntry).list('/test.txt', data_source, true) { [file_entry] }
     stub(HdfsEntry).statistics { HdfsEntryStatistics.new(stats) }
   end
 
