@@ -86,7 +86,6 @@ Makeself version $MS_VERSION
   --disable_spec             disable the spec check [default: False]
   --chorus_only              only setup chorus, will not install alpine [default: False]
   -s, --silent               runing script silently [default: False]
-  -f, --force                force reinitialize the database [default: False]
 EOH
 }
 
