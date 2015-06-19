@@ -21,7 +21,7 @@ chorus.pages.Error = chorus.pages.Bare.extend({
 
     navigateBack: function(e) {
         e.preventDefault();
-        window.history.go(-1)
+        window.history.go(-1);
     },
     
     context: function() {
