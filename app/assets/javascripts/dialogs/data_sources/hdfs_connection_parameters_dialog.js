@@ -78,14 +78,20 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
     },
 
     populateFetchedParams: function() {
-        event && event.preventDefault();
+        // Make an hash lookup for existing keys
+        this.preservePairs();
+        var existing_params = {};
+        _.each(this.pairs, function(pair, index) { this[pair.key] = index; }, existing_params);
 
+        // For each fetched param, either overwrite if it already is defined
+        // or append it to the list.
         var param_set = this.fetchedParams.models[0].attributes.params;
-
-        // Clears all existing config entries for now.
-        this.pairs = [];
         for (var i = 0; i < param_set.length; i++) {
-            this.pairs.push({key: param_set[i].name, value: param_set[i].value});
+            if (existing_params.hasOwnProperty(param_set[i].name)) {
+                this.pairs[existing_params[param_set[i].name]].value = param_set[i].value;
+            } else {
+                this.pairs.push({key: param_set[i].name, value: param_set[i].value});
+            }
         }
 
         this.render();
