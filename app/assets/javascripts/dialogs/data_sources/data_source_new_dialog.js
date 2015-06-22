@@ -97,7 +97,7 @@ chorus.dialogs.DataSourcesNew = chorus.dialogs.Base.extend ({
     createDataSource: function (e) {
         e && e.preventDefault();
 
-        var merged_attributes = _.extend({}, this.fieldValues(), this.model.attributes);
+        var merged_attributes = _.extend({}, this.model.attributes, this.fieldValues());
         delete merged_attributes['entityType'] // Entity type is chosen by dataSourceClass so we don't want to keep it
 
         this.resource = this.model = new (this.dataSourceClass())(merged_attributes);
