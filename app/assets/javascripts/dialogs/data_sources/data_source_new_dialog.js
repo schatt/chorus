@@ -97,14 +97,16 @@ chorus.dialogs.DataSourcesNew = chorus.dialogs.Base.extend ({
     createDataSource: function (e) {
         e && e.preventDefault();
 
-        var values = this.fieldValues();
-        this.resource = this.model = new (this.dataSourceClass())();
+        var merged_attributes = _.extend({}, this.fieldValues(), this.model.attributes);
+        delete merged_attributes['entityType'] // Entity type is chosen by dataSourceClass so we don't want to keep it
+
+        this.resource = this.model = new (this.dataSourceClass())(merged_attributes);
         this.listenTo(this.model, "saved", this.saveSuccess);
         this.listenTo(this.model, "saveFailed", this.saveFailed);
         this.listenTo(this.model, "validationFailed", this.saveFailed);
 
         this.$("button.submit").startLoading("data_sources.new_dialog.saving");
-        this.model.save(values);
+        this.model.save();
     },
 
     dataSourceClass: function() {
