@@ -56,11 +56,31 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
     fetchExternalConfig: function(event) {
         event && event.preventDefault();
 
-        this.fetchedParams = new chorus.collections.HadoopConfigurationParamSet({
-            host: this.$("#configuration_host").val(), //'10.0.0.146',
-            port: this.$("#configuration_port").val() //8088
-        });
+        var host_info = {
+            host: this.$("#configuration_host").val().trim(),
+            port: this.$("#configuration_port").val().trim()
+        };
+        this.fetchedParams = new chorus.collections.HadoopConfigurationParamSet(host_info);
 
+        // Perform manual validation
+        var validation_errors = {};
+
+        if (!host_info.host || host_info.host.length === 0) {
+            validation_errors['configuration_host'] = t('validation.required', {fieldName: "Host"});
+        }
+
+        if (!host_info.port || host_info.port.length === 0) {
+            validation_errors['configuration_port'] = t('validation.required', {fieldName: "Port"});
+        }
+
+        if (!_.isEmpty(validation_errors)) {
+            this.fetchedParams.models[0]['errors'] = validation_errors;
+            this.showErrors(this.fetchedParams.models[0]);
+
+            return;
+        }
+
+        // If validates, fetch params
         this.listenTo(this.fetchedParams, "reset", this.populateFetchedParams);
         this.listenTo(this.fetchedParams, "fetchFailed", this.configFetchFailed);
 

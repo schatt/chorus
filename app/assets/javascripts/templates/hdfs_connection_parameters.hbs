@@ -33,7 +33,7 @@
 
             <div class="multiple_fields">
                 <div class="width_wide">
-                    <label name="configuration_host" class="required" for="configuration_host">{{t "data_sources.dialog.host"}}</label>
+                    <label name="configuration_host" class="host required" for="configuration_host">{{t "data_sources.dialog.host"}}</label>
                 </div>
 
                 <div class="width_small">
@@ -43,11 +43,11 @@
 
             <div class="multiple_fields">
                 <div class="width_wide">
-                    <input type="text" id="configuration_host" name="configuration_host" value="{{host}}"/>
+                    <input type="text" id="configuration_host" required name="configuration_host" value="{{configuration_host}}"/>
                 </div>
 
                 <div class="width_small">
-                    <input type="text" class="port" id="configuration_port" name="configuration_port" value="{{port}}"/>
+                    <input type="text" class="port" id="configuration_port" name="configuration_port" value="{{configuration_port}}"/>
                 </div>
             </div>
 
