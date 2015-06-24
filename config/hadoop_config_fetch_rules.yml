@@ -51,6 +51,8 @@
 - {property: 'name', rule: '==', value: 'yarn.resourcemanager.principal'}
 - {property: 'name', rule: '==', value: 'yarn.resourcemanager.resource-tracker.address'}
 - {property: 'name', rule: '==', value: 'yarn.resourcemanager.scheduler.address'}
+- {property: 'name', rule: '==', value: 'mapreduce.job.map.output.collector.class'}
+- {property: 'name', rule: '==', value: 'mapreduce.job.reduce.shuffle.consumer.plugin.class'}
 - {property: 'name', rule: '=~', value: /^dfs\.namenode\.http-address\./}
 - {property: 'name', rule: '=~', value: /^dfs\.namenode\.https-address\./}
 - {property: 'name', rule: '=~', value: /^dfs\.namenode\.rpc-address\./}
