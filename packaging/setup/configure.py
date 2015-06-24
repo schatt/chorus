@@ -85,8 +85,14 @@ class Configure:
 
         self.method = self._load_configure_func()
         while True:
+            menu = ""
             lens = len(self.method) + 1
-            menu = "\n".join(str(e) + ". " + self.method[e][0] for e in self.method.keys()) + "\n%d. exit" % lens
+            for e in self.method.keys():
+                if self.method[e][0] != "enable_alpine_agent":
+                    menu += str(e) + ". " + self.method[e][0] + " (experimental) \n"
+                else:
+                    menu += str(e) + ". " + self.method[e][0] + "\n"
+            menu += "%d. exit" % lens
             selection = self.io.require_menu(text.get("interview_question", "configuration_menu") % menu, range(1, lens + 1), default=lens)
             if selection == lens:
                 break

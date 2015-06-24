@@ -140,11 +140,12 @@ class ChorusSetup:
     def extract_postgres(self):
         logger.debug("Extract postgres database to %s", self.release_path)
         os_name, version, release = platform.linux_distribution()
+        logger.debug(platform.linux_distribution())
         if os_distribution(os_name) == "redhat"  and version.startswith("5"):
             self.executor.extract_postgres("postgres-redhat5.5-9.2.4.tar.gz")
         elif os_distribution(os_name) == "redhat"  and (version.startswith("6") or version.startswith("7")):
             self.executor.extract_postgres("postgres-redhat6.2-9.2.4.tar.gz")
-        elif os_distribution(os_name)  == "suse" and version == "11":
+        elif os_distribution(os_name)  == "suse" and version.startswith("11"):
             self.executor.extract_postgres("postgres-suse11-9.2.4.tar.gz")
         else:
             raise Exception("postgres not installed, no version match the operation system")

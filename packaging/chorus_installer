@@ -142,7 +142,7 @@ def install():
     if os.getuid() == 0:
         user = options.chorus_user
         user = io.prompt(text.get("interview_question", "specify_user"), default=user)
-        ret, stdout, stderr = run("useradd -m %s" % user)
+        ret, stdout, stderr = run("groupadd %s && useradd -m %s -G %s" % (user, user, user))
         if ret not in [0,9]:
             if ret == 126:
                 stderr += "Please run as the user with root permission\n"
