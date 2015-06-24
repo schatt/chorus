@@ -84,6 +84,34 @@ describe ChorusConfig do
     end
   end
 
+  describe '#hadoop conf fetch configured?' do
+    context 'a matching rule file is supplied and is valid' do
+      before do
+        File.open(Rails.root.join('config/hadoop_config_fetch_rules.yml').to_s, 'w') do |file|
+          new_config = <<-EOF
+        # Sifts out the following properties specifically
+        - {property: 'name', rule: '==', value: 'fixture.property1'}
+        - {property: 'name', rule: '==', value: 'fixture.property2'}
+          EOF
+          file << new_config
+        end
+      end
+
+      it 'parses and returns custom matching rules' do
+        config.config = {'hadoop_config_fetch.rule_file' => 'hadoop_config_fetch_rules.yml'}
+        config.custom_hadoop_config_rules.should == [{"property"=>"name", "rule"=>"==", "value"=>"fixture.property1"},
+                                                     {"property"=>"name", "rule"=>"==", "value"=>"fixture.property2"}]
+      end
+    end
+
+    context 'a matching rule file is supplied and is invalid' do
+      it 'returns nil when supplied file does not exist' do
+        config.config = {'hadoop_config_fetch.rule_file' => 'nonexistentfile.yml'}
+        config.custom_hadoop_config_rules.nil?.should == true
+      end
+    end
+  end
+
   describe "#kaggle_configured?" do
     let(:kaggle_config) do
       {

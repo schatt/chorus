@@ -1,0 +1,72 @@
+# This sets the default rules for filtering the XML input from the hadoop server
+# Which looks like:
+#  <property>
+#      <name>dfs.journalnode.rpc-address</name>
+#      <value>0.0.0.0:8485</value>
+#      <source>hdfs-default.xml</source>
+#  </property>
+#  <property>
+#      <name>yarn.ipc.rpc.class</name>
+#      <value>org.apache.hadoop.yarn.ipc.HadoopYarnProtoRPC</value>
+#      <source>yarn-default.xml</source>
+#  </property>
+#  <property>
+#      <name>mapreduce.job.maxtaskfailures.per.tracker</name>
+#      <value>3</value>
+#      <source>mapred-default.xml</source>
+#  </property>
+#  <property>
+#      <name>ha.health-monitor.connect-retry-interval.ms</name>
+#      <value>1000</value>
+#      <source>core-default.xml</source>
+#  </property>
+# (...)
+
+# The union of matching properties using the rules below is returned.
+#
+# Default:
+# Sifts out the following properties specifically
+- {property: 'name', rule: '==', value: 'dfs.client.failover.proxy.provider.nameservice1'}
+- {property: 'name', rule: '==', value: 'dfs.datanode.kerberos.principal'}
+- {property: 'name', rule: '==', value: 'dfs.datanode.keytab.file'}
+- {property: 'name', rule: '==', value: 'dfs.ha.automatic-failover.enabled.nameservice1'}
+- {property: 'name', rule: '==', value: 'dfs.ha.namenodes.nameservice1'}
+- {property: 'name', rule: '==', value: 'dfs.namenode.kerberos.principal'}
+- {property: 'name', rule: '==', value: 'dfs.namenode.keytab.file'}
+- {property: 'name', rule: '==', value: 'dfs.nameservices'}
+- {property: 'name', rule: '==', value: 'dfs.replication'}
+- {property: 'name', rule: '==', value: 'ha.zookeeper.quorum'}
+- {property: 'name', rule: '==', value: 'hadoop.rpc.protection'}
+- {property: 'name', rule: '==', value: 'hadoop.security.authentication'}
+- {property: 'name', rule: '==', value: 'mapred.child.java.opts'}
+- {property: 'name', rule: '==', value: 'mapreduce.jobhistory.address'}
+- {property: 'name', rule: '==', value: 'mapreduce.jobhistory.keytab.file'}
+- {property: 'name', rule: '==', value: 'mapreduce.jobhistory.principal'}
+- {property: 'name', rule: '==', value: 'mapreduce.jobhistory.webapp.address'}
+- {property: 'name', rule: '==', value: 'mapreduce.reduce.java.opts'}
+- {property: 'name', rule: '==', value: 'mapreduce.reduce.memory.mb'}
+- {property: 'name', rule: '==', value: 'yarn.app.mapreduce.am.staging-dir'}
+- {property: 'name', rule: '==', value: 'yarn.resourcemanager.admin.address'}
+- {property: 'name', rule: '==', value: 'yarn.resourcemanager.keytab.file'}
+- {property: 'name', rule: '==', value: 'yarn.resourcemanager.principal'}
+- {property: 'name', rule: '==', value: 'yarn.resourcemanager.resource-tracker.address'}
+- {property: 'name', rule: '==', value: 'yarn.resourcemanager.scheduler.address'}
+- {property: 'name', rule: '=~', value: /^dfs\.namenode\.http-address\./}
+- {property: 'name', rule: '=~', value: /^dfs\.namenode\.https-address\./}
+- {property: 'name', rule: '=~', value: /^dfs\.namenode\.rpc-address\./}
+- {property: 'name', rule: '=~', value: /^dfs\.namenode\.servicerpc-address\./}
+
+# Other examples:
+# Adds all (because matches anything)
+#- {property: 'name', rule: '!=', value: 'DNE'}
+
+# Adds only those from "source" == 'mapred-default.xml'
+#- {property: 'source', rule: '==', value: 'mapred-default.xml' }
+
+# Adds only those from "source" regex matching /-default\.xml$/
+# (i.e. all properties from files ending in -default.xml)
+#- {property: 'source', rule: '=~', value: /-default\.xml$/}
+
+# Adds only those from "source" regex not matching /-default\.xml$/
+# (i.e. all properties from files NOT ending in -default.xml)
+#- {property: 'source', rule: '!~', value: /-default\.xml$/}

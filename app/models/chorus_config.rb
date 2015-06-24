@@ -1,5 +1,6 @@
 require_relative '../../lib/shared/properties'
 require 'set'
+require 'yaml'
 
 class ChorusConfig
   attr_accessor :config
@@ -56,6 +57,22 @@ class ChorusConfig
 
   def tableau_configured?
     !!(self['tableau.enabled'] && self['tableau.url'] && self['tableau.port'])
+  end
+
+  def custom_hadoop_config_rules
+    # Default to 'config/hadoop_config_fetch_rules.yml'
+    # Or use chorus.properties for hadoop_config_fetch.rule_file if specified.
+    # If neither exists, uses the "rules.default.yml" from chorus-hadoop-conf gem (by returning nil)
+    rule_file = 'hadoop_config_fetch_rules.yml'
+    rule_file =  self['hadoop_config_fetch.rule_file'] if !self['hadoop_config_fetch.rule_file'].nil?
+    rule_file = File.join(@root_dir, 'config/' + rule_file)
+    return nil if !File.exist?(rule_file)
+
+    begin
+      @hadoop_conf_rules ||= YAML.load_file(rule_file)
+    rescue Exception => e
+      nil
+    end
   end
 
   def tableau_sites

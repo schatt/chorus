@@ -117,6 +117,15 @@ tableau.enabled = false
 tableau.url = 10.80.129.44
 tableau.port = 80
 
+# Hadoop Config Fetch Settings
+
+# This points to a yaml file for use in setting the
+# matching rules for fetching hadoop resource manager config files.
+# See github.com/Chorus/chorus-hadoop-conf/blob/master/hadoopconf/rules.default.yml
+# For the default.
+
+hadoop_config_fetch.rule_file = hadoop_config_fetch_rules.yml
+
 # Gnip Settings
 
 gnip.enabled = true

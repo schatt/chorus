@@ -12,21 +12,16 @@ class Hdfs::ParamsController < ApplicationController
     t = HadoopConfig.new({
       :server => params[:host],
       :port => params[:port],
-      :timeout => 5,
-
+      :timeout => 5
     })
 
     # Fetch and parse properties from hadoop host
     t.fetch
-    # Matches parameters as exist in rules.default.yml in hadoopconf_gem.
-    props = t.properties
 
-    # Matches any parameter
-    #props = t.properties([{
-    #  'property' => 'source',
-    #  'rule'     => '!=',
-    #  'value'    => 'DNE'
-    #}])
+    # Matches parameters as exist in rules.default.yml in hadoopconf_gem.
+    # Or be specified in the hadoop_config_fetch_rules.yml file present in config/
+    custom_rules = ChorusConfig.instance.custom_hadoop_config_rules
+    props = custom_rules.nil? ? t.properties : t.properties(custom_rules)
 
     # HadoopConfig.errors is an ActiveModel::Errors object
     if t.errors.empty?

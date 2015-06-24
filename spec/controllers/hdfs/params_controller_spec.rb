@@ -25,6 +25,10 @@
 #      # Todo
 #    end
 #
+#    it "should use the custom config file if present" do
+#      # Todo
+#    end
+#
 #    generate_fixture "hdfsParamFetch.json" do
 #      get :index, :host => hdfs_data_source.host, :port => 8088
 #    end
