@@ -17,7 +17,7 @@ def a_check_os_system():
         os_name, version, release = platform.linux_distribution()
         if os_distribution(os_name) == "redhat" and re.match(r"^[5|6]", version):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
-        elif os_distribution(os_name) == "suse" and version.startswith(11):
+        elif os_distribution(os_name) == "suse" and version.startswith("11"):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
         else:
             raise Exception("os version %s-%s-%s not supported!" % (os_name, version, release))
