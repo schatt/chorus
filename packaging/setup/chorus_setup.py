@@ -82,6 +82,8 @@ class ChorusSetup:
         self._cp_if_not_exist(os.path.join(self.release_path, "config/ldap.properties.example"), \
                               os.path.join(self.shared, "ldap.properties"))
         os.chmod(os.path.join(self.shared, "ldap.properties"), 0600)
+        self._cp_if_not_exist(os.path.join(self.release_path, "config/hadoop_config_fetch_rules.yml"), \
+                              os.path.join(self.shared, "hadoop_config_fetch_rules.yml"))
 
     def construct_data_structure(self):
         logger.debug("Construct data structure in %s" % self.options.data_path)
