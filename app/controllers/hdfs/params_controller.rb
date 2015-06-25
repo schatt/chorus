@@ -12,7 +12,7 @@ class Hdfs::ParamsController < ApplicationController
     t = HadoopConfig.new({
       :server => params[:host],
       :port => params[:port],
-      :timeout => 5
+      :timeout => 10
     })
 
     # Fetch and parse properties from hadoop host
