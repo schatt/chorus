@@ -98,6 +98,8 @@ class ChorusSetup:
                    os.path.join(self.release_path, "config/database.yml"))
         self._ln_sf(os.path.join(self.shared, "sunspot.yml"), \
                    os.path.join(self.release_path, "config/sunspot.yml"))
+        self._ln_sf(os.path.join(self.shared, "hadoop_config_fetch_rules.yml"), \
+                    os.path.join(self.release_path, "config/hadoop_config_fetch_rules.yml"))
         self._ln_sf(os.path.join(self.shared, "ldap.properties"), \
                    os.path.join(self.release_path, "config/ldap.properties"))
         self._ln_sf(os.path.join(self.shared, "demo_data"), \
