@@ -9,11 +9,13 @@
                 <div class="pair line row">
                     <div class="col cols-11">
                         <input type="text" class="key" value="{{key}}"
+                               name="key_{{@index}}"
                                placeholder="{{t "hdfs_connection_parameters.dialog.key"}}"/>
                     </div>
 
                     <div class="col cols-11">
                         <input type="text" class="value" value="{{value}}"
+                               name="value_{{@index}}"
                                placeholder="{{t "hdfs_connection_parameters.dialog.value"}}"/>
                     </div>
 
