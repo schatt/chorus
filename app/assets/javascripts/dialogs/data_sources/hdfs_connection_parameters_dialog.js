@@ -25,6 +25,8 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
         this.model.set('connectionParameters', this.pairs);
 
         if (this.validatePairs() === true) {
+            delete this.model['errors'];
+            this.clearErrors();
             this.closeModal();
         }
     },
@@ -35,7 +37,7 @@ chorus.dialogs.HdfsConnectionParameters = chorus.dialogs.Base.extend({
         for (var k in this.pairs) {
             // Don't allow any key to be blank.
             if (this.pairs[k].key.trim() === '') {
-                validation_errors['key_' + k] = t('field_error.BLANK', {field: "Key"});
+                validation_errors['key_' + k] = t('validation.required', {fieldName: "Key"});
             }
         }
 

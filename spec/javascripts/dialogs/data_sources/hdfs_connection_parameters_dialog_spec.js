@@ -81,6 +81,7 @@ describe("chorus.dialogs.HdfsConnectionParameters", function () {
 
                 this.dialog.$('button.submit').click();
 
+                expect(typeof(this.hadoop.errors)).toEqual("undefined");
                 expect(this.hadoop.get('connectionParameters')).toEqual([{key: 'foo', value: 'bar'}]);
             });
         });
@@ -104,7 +105,7 @@ describe("chorus.dialogs.HdfsConnectionParameters", function () {
 
                 expect(this.dialog.closeModal).not.toHaveBeenCalled();
 
-                expect(this.hadoop.errors).toEqual({'key_0': t('field_error.BLANK', {field: "Key"})});
+                expect(this.hadoop.errors).toEqual({'key_0': t('validation.required', {fieldName: "Key"})});
                 expect(this.dialog.showErrors).toHaveBeenCalled();
             });
         });
