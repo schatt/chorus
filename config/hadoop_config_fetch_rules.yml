@@ -28,11 +28,11 @@
 # Sifts out the following properties specifically
 - {property: 'name', rule: '==', value: 'dfs.client.failover.proxy.provider.nameservice1'}
 - {property: 'name', rule: '==', value: 'dfs.datanode.kerberos.principal'}
-- {property: 'name', rule: '==', value: 'dfs.datanode.keytab'}
+- {property: 'name', rule: '==', value: 'dfs.datanode.keytab.file'}
 - {property: 'name', rule: '==', value: 'dfs.ha.automatic-failover.enabled.nameservice1'}
 - {property: 'name', rule: '==', value: 'dfs.ha.namenodes.nameservice1'}
 - {property: 'name', rule: '==', value: 'dfs.namenode.kerberos.principal'}
-- {property: 'name', rule: '==', value: 'dfs.namenode.keytab'}
+- {property: 'name', rule: '==', value: 'dfs.namenode.keytab.file'}
 - {property: 'name', rule: '==', value: 'dfs.nameservices'}
 - {property: 'name', rule: '==', value: 'dfs.replication'}
 - {property: 'name', rule: '==', value: 'ha.zookeeper.quorum'}
