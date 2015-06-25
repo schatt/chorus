@@ -68,7 +68,7 @@ class ChorusSetup:
         self._cp_if_not_exist(os.path.join(self.release_path, "config/chorus.defaults.properties"), \
                               os.path.join(self.shared, "chorus.properties"))
         os.chmod(os.path.join(self.shared, "chorus.properties"), 0600)
-        self._cp_f(os.path.join(self.release_path, "config/chorus.defaults.properties"), \
+        self._cp_f(os.path.join(self.release_path, "config/chorus.properties.example"), \
                    os.path.join(self.shared, "chorus.properties.example"))
         self._cp_f(os.path.join(self.release_path, "config/chorus.license.default"), \
                    os.path.join(self.shared, "chorus.license.default"))
