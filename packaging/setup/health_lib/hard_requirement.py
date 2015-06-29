@@ -15,7 +15,7 @@ def a_check_os_system():
     @processify(msg=text.get("step_msg", "check_os"))
     def check():
         os_name, version, release = platform.linux_distribution()
-        if os_distribution(os_name) == "redhat" and re.match(r"^[5|6]", version):
+        if os_distribution(os_name) == "redhat" and re.match(r"^[5|6|7]", version):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
         elif os_distribution(os_name) == "suse" and version.startswith("11"):
             logger.debug("os version %s-%s-%s" % (os_name, version, release))
