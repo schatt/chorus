@@ -1,3 +1,7 @@
+This is Open Chorus, maintained by the engineering team at Alpine Data. Please contact info@alpinenow.com for further information, including contributions, bugs, and feature requests.
+
+-----
+
 This ReadMe mirrors our [Github Wiki page](https://github.com/Chorus/chorus/wiki), which houses information for developers contributing to the OpenChorus project.
 
 Browse to the [Wiki pages list](https://github.com/Chorus/chorus/wiki/_pages) to review what's available here.Key pages include:
